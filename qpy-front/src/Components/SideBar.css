@@ -1,0 +1,28 @@
+.side-bar-container {
+    height: 100vh;
+    max-height: 100vh;
+    width: 20rem;
+    max-width: 20rem;
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.side-bar-grid {
+    width: 95%;
+    max-width: 19rem;
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 4.5rem 4.5rem;
+    gap: auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.side-bar-element {
+    height: 4rem;
+    width: 4rem;
+    background-color: red;
+}
