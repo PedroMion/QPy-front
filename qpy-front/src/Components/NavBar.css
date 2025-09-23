@@ -1,35 +1,34 @@
-.side-bar-container {
-    height: 15rem;
-    max-height: 50rem;
-    width: 20rem;
-    max-width: 20rem;
+.nav-bar-container {
+    height: 5rem;
+    max-height: 5rem;
+    width: 30rem;
+    max-width: 30rem;
     background-color: #333333;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    border-radius: 50px;
 }
 
-.side-bar-grid {
-    width: 95%;
-    max-width: 19rem;
-    margin-top: 0.5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 4.5rem 4.5rem;
-    gap: auto;
+.nav-bar-options {
+    width: 10rem;
+    max-width: 10rem;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-items: center;
+    justify-content: space-around;
 }
 
-.side-bar-element {
+.nav-bar-element {
     height: 4rem;
     width: 4rem;
-    background-color: #D5CCC7;
+    color: #D5CCC7;
     cursor: pointer;
+    border: 1px solid #D5CCC7;
 }
 
-.side-bar-button-container {
+.nav-bar-button-container {
     width: 30%;
     min-width: 5rem;
     background-color: #D5CCC7;
@@ -44,7 +43,7 @@
     justify-content: center;
 }
 
-.side-bar-button-container:hover {
+.nav-bar-button-container:hover {
     background-color: #333333;
     color: #D5CCC7;
 }

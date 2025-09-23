@@ -1,11 +1,11 @@
 import './MainPage.css';
-import SideBar from './SideBar';
+import NavBar from './NavBar';
 
 function MainPage() {
   return (
     <div className="main-page-container">
-        <div className='main-page-side-bar-container'>
-          <SideBar />
+        <div className='main-page-nav-bar-container'>
+          <NavBar />
         </div>
 
         <div id='temp-board'>
