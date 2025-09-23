@@ -28,6 +28,10 @@ function SideBar() {
 
             </div>
         </div>
+
+        <div className='side-bar-button-container'>
+          <div className='side-bar-button'>Simulate</div>
+        </div>
     </div>
   );
 }
