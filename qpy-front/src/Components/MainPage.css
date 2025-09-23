@@ -4,8 +4,8 @@
     height: auto;
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: #28262B;
 }

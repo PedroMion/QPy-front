@@ -1,0 +1,13 @@
+.canvas-container {
+    width: 80vw;
+    height: 80vh;
+    max-height: 45rem;
+    max-width: 80rem;
+    background-color: #000000;
+    background-image:
+        linear-gradient(to right, #36454F 1px, transparent 1px),
+        linear-gradient(to bottom, #36454F 1px, transparent 1px);
+    background-size: 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}

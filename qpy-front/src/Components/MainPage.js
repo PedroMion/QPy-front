@@ -1,4 +1,5 @@
 import './MainPage.css';
+import Canvas from './Canvas';
 import NavBar from './NavBar';
 
 function MainPage() {
@@ -8,9 +9,7 @@ function MainPage() {
           <NavBar />
         </div>
 
-        <div id='temp-board'>
-
-        </div>
+        <Canvas />
     </div>
   );
 }
