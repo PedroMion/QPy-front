@@ -5,11 +5,23 @@ function NavBar() {
     <div className="nav-bar-container">
         <div className='nav-bar-options'>
             <div className='nav-bar-element'>
-              μ
+              <div className='nav-bar-element-text' id='nav-bar-element-text-mi'>
+                μ
+              </div>
+
+              <div className='nav-bar-element-text'>
+                Add Server
+              </div>
             </div>
 
             <div className='nav-bar-element'>
-              λ
+              <div className='nav-bar-element-text' id='nav-bar-element-text-lambda'>
+                λ
+              </div>
+
+              <div className='nav-bar-element-text'>
+                Add Entry Point
+              </div>
             </div>
         </div>
 

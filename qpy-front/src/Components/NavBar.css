@@ -25,7 +25,25 @@
     width: 4rem;
     color: #D5CCC7;
     cursor: pointer;
+    border-radius: 0.2rem;
     border: 1px solid #D5CCC7;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.80rem;
+    transition: all 0.5s ease;
+}
+
+.nav-bar-element:hover {
+    background-color: #D5CCC7;
+    color: #333333;
+}
+
+#nav-bar-element-text-lambda, #nav-bar-element-text-mi {
+    font-size: 1.5rem;
+    height: auto;
 }
 
 .nav-bar-button-container {
@@ -46,4 +64,8 @@
 .nav-bar-button-container:hover {
     background-color: #333333;
     color: #D5CCC7;
+}
+
+.nav-bar-element-text {
+    text-align: center;
 }
