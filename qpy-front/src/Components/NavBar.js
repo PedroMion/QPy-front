@@ -1,10 +1,10 @@
 import './NavBar.css';
 
-function NavBar() {
+function NavBar({onClickAddServer}) {
   return (
     <div className="nav-bar-container">
         <div className='nav-bar-options'>
-            <div className='nav-bar-element'>
+            <div className='nav-bar-element' onClick={onClickAddServer}>
               <div className='nav-bar-element-text' id='nav-bar-element-text-mi'>
                 μ
               </div>
