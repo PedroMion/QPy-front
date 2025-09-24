@@ -5,7 +5,7 @@ import ReactFlow, { Controls } from "reactflow";
 
 const nodeTypes = { server: Server, entryPoint: EntryPoint };
 
-function Canvas({nodes, onNodesChange }) {
+function Canvas({nodes, onNodesChange, onNodesDelete }) {
 
     return (
         <div className="canvas-container">
@@ -14,6 +14,8 @@ function Canvas({nodes, onNodesChange }) {
                 edges={[]}
                 nodeTypes={nodeTypes}
                 onNodesChange={onNodesChange}
+                onNodesDelete={deleted => onNodesDelete(deleted)}
+                deleteKeyCode={['Delete', 'Backspace']}
                 nodesDraggable={true}
                 panOnDrag={true}
                 zoomOnPinch={true}

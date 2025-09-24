@@ -44,13 +44,17 @@ function MainPage() {
     []
   );
 
+  const onNodesDelete = (deleted) => (
+    setNodes((nds) => nds.filter((n) => !deleted.find((d) => d.id === n.id)))
+  );
+
   return (
     <div className="main-page-container">
         <div className='main-page-nav-bar-container'>
           <NavBar onClickAddServer={addServer} onClickAddEntryPoint={addEntryPoint} />
         </div>
 
-        <Canvas nodes={nodes} onNodesChange={onNodesChange} />
+        <Canvas nodes={nodes} onNodesChange={onNodesChange} onNodesDelete={onNodesDelete} />
     </div>
   );
 }
