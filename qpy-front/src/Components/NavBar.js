@@ -1,6 +1,6 @@
 import './NavBar.css';
 
-function NavBar({onClickAddServer}) {
+function NavBar({onClickAddServer, onClickAddEntryPoint}) {
   return (
     <div className="nav-bar-container">
         <div className='nav-bar-options'>
@@ -14,7 +14,7 @@ function NavBar({onClickAddServer}) {
               </div>
             </div>
 
-            <div className='nav-bar-element'>
+            <div className='nav-bar-element' onClick={onClickAddEntryPoint}>
               <div className='nav-bar-element-text' id='nav-bar-element-text-lambda'>
                 λ
               </div>

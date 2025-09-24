@@ -1,8 +1,9 @@
 import './Canvas.css';
+import EntryPoint from './EntryPoint';
 import Server from "./Server";
 import ReactFlow, { Controls } from "reactflow";
 
-const nodeTypes = { server: Server };
+const nodeTypes = { server: Server, entryPoint: EntryPoint };
 
 function Canvas({nodes, onNodesChange }) {
 

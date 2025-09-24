@@ -6,21 +6,37 @@ import NavBar from './NavBar';
 
 function MainPage() {
   const [nodes, setNodes] = useState([]);
-  const [nextId, setNextId] = useState(1);
+  const [nextServerId, setNextServerId] = useState(1);
+  const [nextEntryPointId, setNextEntryPointId] = useState(1);
 
   const addServer = () => {
-    const id = `server-${nextId}`;
+    const id = `server-${nextServerId}`;
     setNodes([
       ...nodes,
       {
         id,
         type: "server",
         position: { x: 100, y: 100 },
-        data: { serverLabel: `Server ${nextId}` },
+        data: { serverLabel: `Server ${nextServerId}` },
         style: { width: 60, height: 80 }
       },
     ]);
-    setNextId(nextId + 1);
+    setNextServerId(nextServerId + 1);
+  };
+
+  const addEntryPoint = () => {
+    const id = `entry-point-${nextEntryPointId}`;
+    setNodes([
+      ...nodes,
+      {
+        id,
+        type: "entryPoint",
+        position: { x: 100, y: 100 },
+        data: { entryPointLabel: `Entry Point ${nextEntryPointId}` },
+        style: { width: 60, height: 60 }
+      },
+    ]);
+    setNextEntryPointId(nextEntryPointId + 1);
   };
 
   const onNodesChange = useCallback(
@@ -31,7 +47,7 @@ function MainPage() {
   return (
     <div className="main-page-container">
         <div className='main-page-nav-bar-container'>
-          <NavBar onClickAddServer={addServer} />
+          <NavBar onClickAddServer={addServer} onClickAddEntryPoint={addEntryPoint} />
         </div>
 
         <Canvas nodes={nodes} onNodesChange={onNodesChange} />
