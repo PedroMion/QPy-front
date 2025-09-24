@@ -1,6 +1,5 @@
-.server-container {
+.node-container {
     width: 60px;
-    height: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,12 +8,21 @@
     pointer-events: all;
 }
 
-.server-image {
+.server-container {
+    height: 80px;
+
+}
+
+.entry-point-container {
+    height: 60px;
+}
+
+.node-image {
     width: 60px;
     height: 60px;
 }
 
-.server-image-label {
+.node-image-label {
     width: 100%;
     height: 75%;
     max-height: 40px;

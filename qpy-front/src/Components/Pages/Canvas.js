@@ -1,6 +1,6 @@
 import './Canvas.css';
-import EntryPoint from './EntryPoint';
-import Server from "./Server";
+import EntryPoint from '../CanvasElements/EntryPoint';
+import Server from "../CanvasElements/Server";
 import ReactFlow, { Controls } from "reactflow";
 
 const nodeTypes = { server: Server, entryPoint: EntryPoint };

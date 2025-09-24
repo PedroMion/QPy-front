@@ -1,4 +1,4 @@
-.nav-bar-container {
+.tool-bar-container {
     height: 5rem;
     max-height: 5rem;
     width: 30rem;
@@ -11,7 +11,7 @@
     border-radius: 50px;
 }
 
-.nav-bar-options {
+.tool-bar-options {
     width: 10rem;
     max-width: 10rem;
     display: flex;
@@ -20,7 +20,7 @@
     justify-content: space-around;
 }
 
-.nav-bar-element {
+.tool-bar-element {
     height: 4rem;
     width: 4rem;
     color: #D5CCC7;
@@ -36,17 +36,17 @@
     transition: all 0.5s ease;
 }
 
-.nav-bar-element:hover {
+.tool-bar-element:hover {
     background-color: #D5CCC7;
     color: #333333;
 }
 
-#nav-bar-element-text-lambda, #nav-bar-element-text-mi {
+#tool-bar-element-text-lambda, #tool-bar-element-text-mi {
     font-size: 1.5rem;
     height: auto;
 }
 
-.nav-bar-button-container {
+.tool-bar-button-container {
     width: 30%;
     min-width: 5rem;
     background-color: #D5CCC7;
@@ -61,11 +61,11 @@
     justify-content: center;
 }
 
-.nav-bar-button-container:hover {
+.tool-bar-button-container:hover {
     background-color: #333333;
     color: #D5CCC7;
 }
 
-.nav-bar-element-text {
+.tool-bar-element-text {
     text-align: center;
 }
