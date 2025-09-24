@@ -1,0 +1,22 @@
+.server-container {
+    width: 60px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.server-image {
+    width: 60px;
+    height: 60px;
+}
+
+.server-image-label {
+    width: 100%;
+    height: 75%;
+    max-height: 40px;
+    font-size: 1rem;
+    color: white;
+}

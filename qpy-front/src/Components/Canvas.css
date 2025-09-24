@@ -11,3 +11,8 @@
     position: relative;
     overflow: hidden;
 }
+
+.canvas-react-flow-board {
+    width: 100%;
+    height: 100%;
+}

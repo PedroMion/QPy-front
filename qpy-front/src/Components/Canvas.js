@@ -1,9 +1,10 @@
 import './Canvas.css';
 import Server from "./Server";
-import ReactFlow, { Controls, MiniMap } from "reactflow";
+import ReactFlow, { Controls } from "reactflow";
+
+const nodeTypes = { server: Server };
 
 function Canvas({nodes}) {
-    const nodeTypes = { server: Server };
 
     return (
         <div className="canvas-container">
@@ -11,11 +12,10 @@ function Canvas({nodes}) {
                 nodes={nodes}
                 edges={[]}
                 nodeTypes={nodeTypes}
-                fitView
+                className='canvas-react-flow-board'
             >
-            <Controls />
-            <MiniMap />
-        </ReactFlow>
+                <Controls />
+            </ReactFlow>
         </div>
     );
 }

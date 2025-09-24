@@ -7,19 +7,21 @@ function MainPage() {
   const [nodes, setNodes] = useState([]);
   const [nextId, setNextId] = useState(1);
 
-    const addServer = () => {
+  const addServer = () => {
     const id = `server-${nextId}`;
-      setNodes([
-        ...nodes,
-        {
-          id,
-          type: "server",
-          position: { x: 100 + nextId * 20, y: 100 + nextId * 20 },
-          data: { label: `Servidor ${nextId}` },
-        },
-      ]);
-      setNextId(nextId + 1);
-    };
+    setNodes([
+      ...nodes,
+      {
+        id,
+        type: "server",
+        position: { x: 100, y: 100 },
+        data: { serverLabel: `Server ${nextId}` },
+        draggable: true,
+        style: { width: 60, height: 80 }
+      },
+    ]);
+    setNextId(nextId + 1);
+  };
 
   return (
     <div className="main-page-container">

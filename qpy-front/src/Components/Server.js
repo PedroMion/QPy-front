@@ -1,11 +1,12 @@
 import { Handle, Position } from "reactflow";
-import serverImage from '../Images/serverImage.png'
+import './Server.css'
+import serverImage from '../Images/server_image.svg'
 
-function Server({ serverLabel }) {
+function Server({ data }) {
     return (
         <div className="server-container">
-            <img src={serverImage} alt="Server" />
-            <span>{serverLabel}</span>
+            <img src={serverImage} alt="Server" className="server-image" />
+            <div className="server-image-label">{data.serverLabel}</div>
 
             <Handle type="target" position={Position.Left} />
             <Handle type="source" position={Position.Right} />
