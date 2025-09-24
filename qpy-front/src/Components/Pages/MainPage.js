@@ -1,7 +1,7 @@
 import './MainPage.css';
 import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
-import { useFlowState } from '../Hooks/UseFlowState';
+import { useFlowState } from '../Hooks/useFlowState';
 
 function MainPage() {
     const {
