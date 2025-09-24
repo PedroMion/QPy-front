@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
+import { applyNodeChanges } from "reactflow";
 import './MainPage.css';
 import Canvas from './Canvas';
 import NavBar from './NavBar';
@@ -16,12 +17,16 @@ function MainPage() {
         type: "server",
         position: { x: 100, y: 100 },
         data: { serverLabel: `Server ${nextId}` },
-        draggable: true,
         style: { width: 60, height: 80 }
       },
     ]);
     setNextId(nextId + 1);
   };
+
+  const onNodesChange = useCallback(
+    (changes) => setNodes(nds => applyNodeChanges(changes, nds)),
+    []
+  );
 
   return (
     <div className="main-page-container">
@@ -29,7 +34,7 @@ function MainPage() {
           <NavBar onClickAddServer={addServer} />
         </div>
 
-        <Canvas nodes={nodes} />
+        <Canvas nodes={nodes} onNodesChange={onNodesChange} />
     </div>
   );
 }
