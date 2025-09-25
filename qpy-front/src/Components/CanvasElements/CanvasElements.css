@@ -1,11 +1,12 @@
 .node-container {
-    width: 60px;
+    width: 80px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
     pointer-events: all;
+    position: relative;
 }
 
 .server-container {
@@ -15,6 +16,15 @@
 
 .entry-point-container {
     height: 60px;
+}
+
+.node-image-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .node-image {
@@ -30,8 +40,17 @@
     color: white;
 }
 
+.node-handle-container {
+    width: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .node-handle {
     background: white;
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 10px;
+    height: 10px;
 }

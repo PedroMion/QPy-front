@@ -28,8 +28,18 @@ export const useFlowState = () => {
     [setEdges]
   );
   
-  const onConnect = useCallback(
-    (connection) => setEdges((eds) => addEdge(connection, eds)),
+ const onConnect = useCallback(
+  (connection) =>
+    setEdges((eds) =>
+      addEdge(
+        {
+          ...connection,
+          animated: true,
+          style: { stroke: "white", strokeWidth: 2 },
+        },
+          eds
+        )
+      ),
     [setEdges]
   );
 
@@ -39,9 +49,9 @@ export const useFlowState = () => {
     const newNode = {
       id,
       type: "server",
-      position: { x: 100, y: 100 },
+      position: { x: Math.random() * 400, y: Math.random() * 400 },
       data: { serverLabel: `Server ${nextServerId.current}` },
-      style: { width: 60, height: 80 }
+      style: { width: 80, height: 80 }
     };
 
     setNodes((nds) => [...nds, newNode]);
@@ -54,9 +64,9 @@ export const useFlowState = () => {
     const newNode = {
       id,
       type: "entryPoint",
-      position: { x: 100, y: 100 },
+      position: { x: Math.random() * 400, y: Math.random() * 400 },
       data: { entryPointLabel: `Entry Point ${nextEntryPointId.current}` },
-      style: { width: 60, height: 60 }
+      style: { width: 80, height: 60 }
     };
 
     setNodes((nds) => [...nds, newNode]);

@@ -5,11 +5,18 @@ import serverImage from '../../Images/server_image.svg'
 function Server({ data }) {
     return (
         <div className="server-container node-container">
-            <img src={serverImage} alt="Server" className="node-image" />
-            <div className="node-image-label">{data.serverLabel}</div>
+            <div className="node-handle-container">
+                <Handle className="node-handle" type="target" position={Position.Left} />
+            </div>
 
-            <Handle className="node-handle" type="target" position={Position.Left} />
-            <Handle className="node-handle" type="source" position={Position.Right} />
+            <div className="node-image-container">
+                <img src={serverImage} alt="Server" className="node-image" />
+                <div className="node-image-label">{data.serverLabel}</div>
+            </div>
+
+            <div className="node-handle-container">
+                <Handle className="node-handle" type="source" position={Position.Right} />
+            </div>
         </div>
     );
 }
