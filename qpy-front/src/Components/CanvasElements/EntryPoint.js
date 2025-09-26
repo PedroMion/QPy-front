@@ -5,17 +5,13 @@ import lambdaImage from '../../Images/lambda_image.png'
 function EntryPoint({ data }) {
     return (
         <div className="entry-point-container node-container">
-            <div className="node-handle-container">
-                <Handle className="node-handle" type="target" position={Position.Left} />
-            </div>
+            <Handle className="node-handle node-handle-target" type="target" position={Position.Left} />
 
             <div className="node-image-container">
                 <img src={lambdaImage} alt="Entry Point" className="node-image" />
             </div>
 
-            <div>
-                <Handle className="node-handle" type="source" position={Position.Right} />
-            </div>
+            <Handle className="node-handle node-handle-source" type="source" position={Position.Right} />
         </div>
     );
 }

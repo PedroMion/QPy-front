@@ -1,6 +1,6 @@
 import './ToolBar.css';
 
-function ToolBar({onClickAddServer, onClickAddEntryPoint}) {
+function ToolBar({onClickAddServer, onClickAddEntryPoint, onModalClosed}) {
   return (
     <div className="tool-bar-container">
         <div className='tool-bar-options'>
