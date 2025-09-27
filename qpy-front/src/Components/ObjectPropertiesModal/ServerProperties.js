@@ -17,6 +17,10 @@ function ServerProperties() {
         <span className='server-properties-element-text'>Queue Discipline:</span>
         <input></input>
       </div>
+
+      <div className='server-properties-button-container'>
+        <div className='server-properties-button'>Add Server</div>
+      </div>
     </div>
   );
 }
