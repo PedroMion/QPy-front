@@ -64,6 +64,7 @@
 .tool-bar-button-container:hover {
     background-color: #333333;
     color: #D5CCC7;
+    border: 1px solid #D5CCC7;
 }
 
 .tool-bar-element-text {

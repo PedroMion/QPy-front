@@ -5,8 +5,34 @@
     align-items: center;
     padding: 2rem;
     width: 20rem;
-    height: 30rem;
+    height: 25rem;
+    border-radius: 2rem;
     background-color: #333333;
+}
+
+.server-properties-header {
+    width: 95%;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #D5CCC7;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 0;
+}
+
+.server-properties-header-button {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.server-properties-header-button:hover {
+    transform: scale(1.10);
+    color: #D70040;
 }
 
 .server-properties-element {
@@ -15,7 +41,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap: 0.5rem;
     height: auto;
+    text-align: left;
 }
 
 .server-properties-element-text {
@@ -42,6 +70,38 @@
 }
 
 .server-properties-button:hover {
+    color: #D5CCC7;
+    background-color: #333333;
+    border: 1px solid #D5CCC7;
+}
+
+.server-properties-element-input {
+    width: 10rem;
+    height: 1.5rem;
+    border-radius: 2rem;
+    background-color: #D5CCC7;
+    border: none;
+    color: #333333;
+    transition: ease 0.5s all;
+}
+
+.server-properties-element-input:focus {
+    background-color: #333333;
+    border: 1px solid #D5CCC7;
+    color: #D5CCC7;
+}
+
+.server-properties-element-select {
+    width: 10rem;
+    height: 1.5rem;
+    border-radius: 2rem;
+    background-color: #D5CCC7;
+    color: #333333;
+    cursor: pointer;
+    transition: ease 0.5s all;
+}
+
+.server-properties-element-select:hover {
     color: #D5CCC7;
     background-color: #333333;
     border: 1px solid #D5CCC7;
