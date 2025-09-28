@@ -43,14 +43,19 @@ export const useFlowState = () => {
     [setEdges]
   );
 
-  const addServer = useCallback(() => {
+  const addServer = useCallback((serviceRate, serviceDistribution, queueDiscipline) => {
     const id = `server-${nextServerId.current}`;
 
     const newNode = {
       id,
       type: "server",
       position: { x: Math.random() * 400, y: Math.random() * 400 },
-      data: { serverLabel: `Server ${nextServerId.current}` },
+      data: { 
+        serverLabel: `Server ${nextServerId.current}`,
+        serviceRate: serviceRate,
+        serviceDistribution: serviceDistribution,
+        queueDiscipline: queueDiscipline
+      },
       style: { width: 80, height: 80 }
     };
 

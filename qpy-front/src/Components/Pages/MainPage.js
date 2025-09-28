@@ -40,7 +40,7 @@ function MainPage() {
           onConnect={onConnect} />
         
         <div id='main-page-server-properties-wrapper'>
-          <ServerProperties />
+          <ServerProperties addServer={addServer} onModalClosed={onModalClosed} />
         </div>
     </div>
   );
