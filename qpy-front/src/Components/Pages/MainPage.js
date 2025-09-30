@@ -3,6 +3,7 @@ import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
 import { useFlowState } from '../Hooks/useFlowState';
 import { useObjectPropertiesModals } from '../Hooks/useObjectPropertiesModals';
+import EntryPointProperties from '../ObjectPropertiesModal/EntryPointProperties';
 import ServerProperties from '../ObjectPropertiesModal/ServerProperties';
 
 function MainPage() {
@@ -19,6 +20,7 @@ function MainPage() {
 
   const {
     onClickAddServer,
+    onClickAddEntryPoint,
     onModalClosed,
   } = useObjectPropertiesModals();
 
@@ -27,7 +29,7 @@ function MainPage() {
         <div className='main-page-nav-bar-container' id='main-page-nav-bar-container'>
           <NavBar 
             onClickAddServer={onClickAddServer} 
-            onClickAddEntryPoint={addEntryPoint}
+            onClickAddEntryPoint={onClickAddEntryPoint}
             onModalClosed={onModalClosed} />
         </div>
 
@@ -41,6 +43,10 @@ function MainPage() {
         
         <div id='main-page-server-properties-wrapper'>
           <ServerProperties addServer={addServer} onModalClosed={onModalClosed} />
+        </div>
+
+        <div id='main-page-entry-point-properties-wrapper'>
+          <EntryPointProperties addEntryPoint={addEntryPoint} onModalClosed={onModalClosed} />
         </div>
     </div>
   );

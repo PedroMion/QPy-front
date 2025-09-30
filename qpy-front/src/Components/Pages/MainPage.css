@@ -18,7 +18,7 @@
     transform: translate(-50%);
 }
 
-#main-page-server-properties-wrapper {
+#main-page-server-properties-wrapper, #main-page-entry-point-properties-wrapper {
     z-index: 1;
     position: absolute;
     top: 50%;

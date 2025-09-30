@@ -1,4 +1,4 @@
-.server-properties-container {
+.object-properties-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -10,7 +10,7 @@
     background-color: #333333;
 }
 
-.server-properties-header {
+.object-properties-header {
     width: 95%;
     height: 3rem;
     display: flex;
@@ -23,19 +23,19 @@
     top: 0;
 }
 
-.server-properties-header-button {
+.object-properties-header-button {
     width: 2rem;
     height: 2rem;
     cursor: pointer;
     transition: 0.1s ease;
 }
 
-.server-properties-header-button:hover {
+.object-properties-header-button:hover {
     transform: scale(1.10);
     color: #D70040;
 }
 
-.server-properties-element {
+.object-properties-element {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -46,11 +46,11 @@
     text-align: left;
 }
 
-.server-properties-element-text {
+.object-properties-element-text {
     color: #D5CCC7;
 }
 
-.server-properties-button-container {
+.object-properties-button-container {
     width: 100%;
     height: auto;
     display: flex;
@@ -59,7 +59,7 @@
     justify-content: center;
 }
 
-.server-properties-button {
+.object-properties-button {
     height: 1.8rem;
     width: 5.4rem;
     background-color: #D5CCC7;
@@ -69,14 +69,15 @@
     transition: ease 0.5s all;
 }
 
-.server-properties-button:hover {
+.object-properties-button:hover {
     color: #D5CCC7;
     background-color: #333333;
     border: 1px solid #D5CCC7;
 }
 
-.server-properties-element-input {
-    width: 10rem;
+.object-properties-element-input {
+    width: 9.5rem;
+    padding-left: 0.5rem;
     height: 1.5rem;
     border-radius: 2rem;
     background-color: #D5CCC7;
@@ -85,13 +86,13 @@
     transition: ease 0.5s all;
 }
 
-.server-properties-element-input:focus {
+.object-properties-element-input:focus {
     background-color: #333333;
     border: 1px solid #D5CCC7;
     color: #D5CCC7;
 }
 
-.server-properties-element-select {
+.object-properties-element-select {
     width: 10rem;
     height: 1.5rem;
     border-radius: 2rem;
@@ -101,8 +102,12 @@
     transition: ease 0.5s all;
 }
 
-.server-properties-element-select:hover {
+.object-properties-element-select:hover {
     color: #D5CCC7;
     background-color: #333333;
     border: 1px solid #D5CCC7;
+}
+
+#entry-point-button {
+    width: 8rem;
 }

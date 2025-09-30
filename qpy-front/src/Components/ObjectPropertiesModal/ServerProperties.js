@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './ServerProperties.css';
+import './ObjectProperties.css';
 
 function ServerProperties({addServer, onModalClosed}) {
   const [serviceRate, setServiceRate] = useState("");
@@ -17,26 +17,26 @@ function ServerProperties({addServer, onModalClosed}) {
   };
 
   return (
-    <div className="server-properties-container">
-      <div className='server-properties-header'>
-        <div className='server-properties-header-text'>Configure Server</div>
-        <div className='server-properties-header-button' onClick={onModalClosed}>X</div>
+    <div className="object-properties-container">
+      <div className='object-properties-header'>
+        <div className='object-properties-header-text'>Configure Server</div>
+        <div className='object-properties-header-button' onClick={onModalClosed}>X</div>
       </div>
 
-      <div className='server-properties-element'>
-        <span className='server-properties-element-text'>Service Rate (Jobs per second):</span>
+      <div className='object-properties-element'>
+        <span className='object-properties-element-text'>Service Rate (Jobs per second):</span>
         <input
           type='number'
-          className='server-properties-element-input'
+          className='object-properties-element-input'
           value={serviceRate}
           onChange={(e) => setServiceRate(e.target.value)}
         />
       </div>
 
-      <div className='server-properties-element'>
-        <span className='server-properties-element-text'>Service Distribution:</span>
+      <div className='object-properties-element'>
+        <span className='object-properties-element-text'>Service Distribution:</span>
         <select
-          className='server-properties-element-select'
+          className='object-properties-element-select'
           value={serviceDistribution}
           onChange={(e) => setServiceDistribution(e.target.value)}
         >
@@ -47,10 +47,10 @@ function ServerProperties({addServer, onModalClosed}) {
         </select>
       </div>
 
-      <div className='server-properties-element'>
-        <span className='server-properties-element-text'>Queue Discipline:</span>
+      <div className='object-properties-element'>
+        <span className='object-properties-element-text'>Queue Discipline:</span>
         <select
-          className='server-properties-element-select'
+          className='object-properties-element-select'
           value={queueDiscipline}
           onChange={(e) => setQueueDiscipline(e.target.value)}
         >
@@ -62,9 +62,9 @@ function ServerProperties({addServer, onModalClosed}) {
         </select>
       </div>
 
-      <div className='server-properties-button-container'>
+      <div className='object-properties-button-container'>
         <div
-          className='server-properties-button'
+          className='object-properties-button'
           onClick={handleAddServer}
         >
           Add Server
