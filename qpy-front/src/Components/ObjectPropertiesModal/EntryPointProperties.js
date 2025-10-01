@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import './ObjectProperties.css';
+import DistributionSection from './Sections/DistributionSection';
 
 function EntryPointProperties({addEntryPoint, onModalClosed}) {
-  const [arrivalRate, setArrivalRate] = useState("");
-  const [arrivalDistribution, setArrivalDistribution] = useState("exponential");
+  const [distributionProperties, setDistributionProperties] = useState({});
   const [hasPriority, setHasPriority] = useState(false);
 
+  const validateField = (data) => {
+    return Object.values(data.params).every(value => value !== "");
+  };
+
   const handleAddEntryPoint = () => {
-    if (!arrivalRate) {
-      alert("Please enter a valid arrival rate.");
+    if (!validateField(distributionProperties)) {
+      alert("Please enter valid distribution information.");
       return;
     }
 
-    addEntryPoint(arrivalRate, arrivalDistribution);
+    addEntryPoint(distributionProperties);
     onModalClosed();
   };
 
@@ -23,29 +27,10 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
         <div className='object-properties-header-button' onClick={onModalClosed}>X</div>
       </div>
 
-      <div className='object-properties-element'>
-        <span className='object-properties-element-text'>Arrival Rate (Jobs per second):</span>
-        <input
-          type='number'
-          className='object-properties-element-input'
-          value={arrivalRate}
-          onChange={(e) => setArrivalRate(e.target.value)}
-        />
-      </div>
-
-      <div className='object-properties-element'>
-        <span className='object-properties-element-text'>Arrival Distribution:</span>
-        <select
-          className='object-properties-element-select'
-          value={arrivalDistribution}
-          onChange={(e) => setArrivalDistribution(e.target.value)}
-        >
-          <option value="exponential">Exponential</option>
-          <option value="constant">Constant</option>
-          <option value="uniform">Uniform</option>
-          <option value="normal">Normal</option>
-        </select>
-      </div>
+      <DistributionSection
+        sectionTitle="Arrival Distribution:"
+        setDistributionProperties={setDistributionProperties}
+      />
 
       <div className='object-properties-element'>
         <span className='object-properties-element-text'>Priority Distribution:</span>

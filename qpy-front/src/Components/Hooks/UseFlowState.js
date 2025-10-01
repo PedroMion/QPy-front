@@ -43,7 +43,7 @@ export const useFlowState = () => {
     [setEdges]
   );
 
-  const addServer = useCallback((serviceRate, serviceDistribution, queueDiscipline) => {
+  const addServer = useCallback((distributionProperties, queueDiscipline) => {
     const id = `server-${nextServerId.current}`;
 
     const newNode = {
@@ -52,8 +52,7 @@ export const useFlowState = () => {
       position: { x: Math.random() * 400, y: Math.random() * 400 },
       data: { 
         serverLabel: `Server ${nextServerId.current}`,
-        serviceRate: serviceRate,
-        serviceDistribution: serviceDistribution,
+        distributionProperties: distributionProperties,
         queueDiscipline: queueDiscipline
       },
       style: { width: 80, height: 80 }
@@ -63,14 +62,17 @@ export const useFlowState = () => {
     nextServerId.current += 1;
   }, [setNodes]);
 
-  const addEntryPoint = useCallback(() => {
+  const addEntryPoint = useCallback((distributionProperties) => {
     const id = `entry-point-${nextEntryPointId.current}`;
 
     const newNode = {
       id,
       type: "entryPoint",
       position: { x: Math.random() * 400, y: Math.random() * 400 },
-      data: { entryPointLabel: `Entry Point ${nextEntryPointId.current}` },
+      data: { 
+        entryPointLabel: `Entry Point ${nextEntryPointId.current}`,
+        distributionProperties: distributionProperties
+      },
       style: { width: 80, height: 60 }
     };
 

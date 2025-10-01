@@ -1,11 +1,11 @@
 .object-properties-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding: 2rem;
     width: 20rem;
-    height: 25rem;
+    height: auto;
     border-radius: 2rem;
     background-color: #333333;
 }
@@ -44,6 +44,7 @@
     gap: 0.5rem;
     height: auto;
     text-align: left;
+    margin-top: 1.5rem;
 }
 
 .object-properties-element-text {
@@ -57,6 +58,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
 
 .object-properties-button {
@@ -93,7 +95,7 @@
 }
 
 .object-properties-element-select {
-    width: 10rem;
+    width: 10.15rem;
     height: 1.5rem;
     border-radius: 2rem;
     background-color: #D5CCC7;
@@ -106,6 +108,13 @@
     color: #D5CCC7;
     background-color: #333333;
     border: 1px solid #D5CCC7;
+}
+
+.object-properties-multiple-element-container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
 }
 
 #entry-point-button {
