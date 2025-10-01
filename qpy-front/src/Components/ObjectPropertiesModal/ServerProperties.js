@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './ObjectProperties.css';
 import DistributionSection from './Sections/DistributionSection';
+import QueueDisciplineSection from './Sections/QueueDisciplineSection';
 
 function ServerProperties({addServer, onModalClosed}) {
   const [distributionProperties, setDistributionProperties] = useState({});
-  const [queueDiscipline, setQueueDiscipline] = useState("fcfs");
+  const [queueProperties, setQueueProperties] = useState({});
 
   const validateField = (data) => {
     return Object.values(data.params).every(value => value !== "");
@@ -16,7 +17,12 @@ function ServerProperties({addServer, onModalClosed}) {
       return;
     }
 
-    addServer(distributionProperties, queueDiscipline);
+    if (!validateField(queueProperties)) {
+      alert("Please enter valid queue information.");
+      return;
+    }
+
+    addServer(distributionProperties, queueProperties);
     onModalClosed();
   };
 
@@ -32,20 +38,9 @@ function ServerProperties({addServer, onModalClosed}) {
         setDistributionProperties={setDistributionProperties}
       />
 
-      <div className='object-properties-element'>
-        <span className='object-properties-element-text'>Queue Discipline:</span>
-        <select
-          className='object-properties-element-select'
-          value={queueDiscipline}
-          onChange={(e) => setQueueDiscipline(e.target.value)}
-        >
-          <option value="fcfs">First Come First Served</option>
-          <option value="lcfs">Last Come First Served</option>
-          <option value="rr">Round Robin</option>
-          <option value="srt">Shortest Remaining Time</option>
-          <option value="priority">Priority</option>
-        </select>
-      </div>
+      <QueueDisciplineSection 
+        setQueueProperties={setQueueProperties}
+      />
 
       <div className='object-properties-button-container'>
         <div
