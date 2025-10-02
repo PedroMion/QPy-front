@@ -63,7 +63,8 @@
 
 .object-properties-button {
     height: 1.8rem;
-    width: 5.4rem;
+    min-width: 5.4rem;
+    width: auto;
     background-color: #D5CCC7;
     color: #333333;
     border-radius: 1rem;

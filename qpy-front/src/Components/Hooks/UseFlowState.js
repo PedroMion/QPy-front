@@ -62,7 +62,7 @@ export const useFlowState = () => {
     nextServerId.current += 1;
   }, [setNodes]);
 
-  const addEntryPoint = useCallback((distributionProperties) => {
+  const addEntryPoint = useCallback((distributionProperties, priorityDistribution) => {
     const id = `entry-point-${nextEntryPointId.current}`;
 
     const newNode = {
@@ -71,7 +71,8 @@ export const useFlowState = () => {
       position: { x: Math.random() * 400, y: Math.random() * 400 },
       data: { 
         entryPointLabel: `Entry Point ${nextEntryPointId.current}`,
-        distributionProperties: distributionProperties
+        distributionProperties: distributionProperties,
+        priorityDistribution: priorityDistribution
       },
       style: { width: 80, height: 60 }
     };

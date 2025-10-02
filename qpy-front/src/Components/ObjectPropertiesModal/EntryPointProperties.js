@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './ObjectProperties.css';
 import DistributionSection from './Sections/DistributionSection';
+import PrioritySection from './Sections/PrioritySection';
 
 function EntryPointProperties({addEntryPoint, onModalClosed}) {
   const [distributionProperties, setDistributionProperties] = useState({});
-  const [hasPriority, setHasPriority] = useState(false);
+  const [priorityDistribution, setPriorityDistribution] = useState(false);
 
   const validateField = (data) => {
     return Object.values(data.params).every(value => value !== "");
@@ -16,7 +17,7 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
       return;
     }
 
-    addEntryPoint(distributionProperties);
+    addEntryPoint(distributionProperties, priorityDistribution);
     onModalClosed();
   };
 
@@ -32,10 +33,9 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
         setDistributionProperties={setDistributionProperties}
       />
 
-      <div className='object-properties-element'>
-        <span className='object-properties-element-text'>Priority Distribution:</span>
-        <input type="checkbox" className='object-properties-element-input' value={hasPriority} />
-      </div>
+      <PrioritySection 
+        setPriorityDistribution={setPriorityDistribution}
+      />
 
       <div className='object-properties-button-container'>
         <div
