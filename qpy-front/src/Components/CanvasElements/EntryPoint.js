@@ -9,7 +9,7 @@ function EntryPoint({ data }) {
                 <img src={lambdaImage} alt="Entry Point" className="node-image" />
             </div>
 
-            <Handle className="node-handle node-handle-source" type="source" position={Position.Right} />
+            <Handle className="node-handle" type="source" position={Position.Right} />
         </div>
     );
 }

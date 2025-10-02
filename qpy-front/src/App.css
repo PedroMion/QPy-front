@@ -43,3 +43,14 @@
     transform: rotate(360deg);
   }
 }
+
+.react-flow__node, .react-flow__node * {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+.react-flow__node img {
+  display: block !important;
+  max-width: 100% !important;
+  height: auto !important;
+}

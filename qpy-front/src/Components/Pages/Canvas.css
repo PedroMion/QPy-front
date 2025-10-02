@@ -1,6 +1,6 @@
 .canvas-container {
-    width: 1300px;
-    height: 500px;
+    width: 1300px !important;
+    height: 500px !important;
     max-height: 80vh;
     max-width: 90vw;
     background-color: #000000;

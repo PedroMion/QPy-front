@@ -3,12 +3,15 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   addEdge,
+  useReactFlow
 } from 'reactflow';
 
 
 export const useFlowState = () => {
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
+  
+  const { project } = useReactFlow();
 
   const nextServerId = useRef(1);
   const nextEntryPointId = useRef(1);
@@ -45,11 +48,19 @@ export const useFlowState = () => {
 
   const addServer = useCallback((distributionProperties, queueDiscipline) => {
     const id = `server-${nextServerId.current}`;
+    const { innerWidth, innerHeight } = window;
+
+    const position = project({
+      x: innerWidth / 2,
+      y: innerHeight / 2,
+    });
+
+    console.log(position);
 
     const newNode = {
       id,
       type: "server",
-      position: { x: Math.random() * 400, y: Math.random() * 400 },
+      position: position,
       data: { 
         serverLabel: `Server ${nextServerId.current}`,
         distributionProperties: distributionProperties,
@@ -60,7 +71,7 @@ export const useFlowState = () => {
 
     setNodes((nds) => [...nds, newNode]);
     nextServerId.current += 1;
-  }, [setNodes]);
+  }, [setNodes, project]);
 
   const addEntryPoint = useCallback((distributionProperties, priorityDistribution) => {
     const id = `entry-point-${nextEntryPointId.current}`;

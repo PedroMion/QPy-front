@@ -1,7 +1,7 @@
 import './Canvas.css';
 import EntryPoint from '../CanvasElements/EntryPoint';
 import Server from "../CanvasElements/Server";
-import ReactFlow, { Controls } from "reactflow";
+import ReactFlow, { Background } from "reactflow";
 
 const nodeTypes = { server: Server, entryPoint: EntryPoint };
 
@@ -19,12 +19,15 @@ function Canvas({nodes, onNodesChange, onNodesDelete, edges, onEdgesChange, onCo
                 onConnect={onConnect}
                 deleteKeyCode={['Delete', 'Backspace']}
                 nodesDraggable={true}
-                panOnDrag={true}
-                zoomOnPinch={true}
-                zoomOnScroll={true}
+                panOnDrag={false}
+                zoomOnPinch={false}
+                zoomOnScroll={false}
                 className='canvas-react-flow-board'
+                defaultEdgeOptions={{
+                    type: 'step',
+                    style: { stroke: 'white', strokeWidth: 2 }
+                }}
             >
-                <Controls />
             </ReactFlow>
         </div>
     );
