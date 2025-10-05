@@ -1,36 +1,57 @@
 import './Canvas.css';
+import '@xyflow/react/dist/style.css';
 import EntryPoint from '../CanvasElements/EntryPoint';
-import Server from "../CanvasElements/Server";
-import ReactFlow, { Background } from "reactflow";
+import Server from '../CanvasElements/Server';
+import {
+  ReactFlow,
+  Background,
+  Controls,
+  MiniMap,
+  ReactFlowProvider,
+} from '@xyflow/react';
 
-const nodeTypes = { server: Server, entryPoint: EntryPoint };
+const nodeTypes = {
+  server: Server,
+  entryPoint: EntryPoint,
+};
 
-function Canvas({nodes, onNodesChange, onNodesDelete, edges, onEdgesChange, onConnect }) {
-
-    return (
-        <div className="canvas-container">
-            <ReactFlow
-                nodes={nodes}
-                nodeTypes={nodeTypes}
-                onNodesChange={onNodesChange}
-                onNodesDelete={deleted => onNodesDelete(deleted)}
-                edges={edges}
-                onEdgesChange={onEdgesChange}
-                onConnect={onConnect}
-                deleteKeyCode={['Delete', 'Backspace']}
-                nodesDraggable={true}
-                panOnDrag={false}
-                zoomOnPinch={false}
-                zoomOnScroll={false}
-                className='canvas-react-flow-board'
-                defaultEdgeOptions={{
-                    type: 'step',
-                    style: { stroke: 'white', strokeWidth: 2 }
-                }}
-            >
-            </ReactFlow>
-        </div>
-    );
+function Canvas({
+  nodes,
+  edges,
+  onNodesChange,
+  onEdgesChange,
+  onConnect,
+  onNodesDelete,
+}) {
+  return (
+    <div className="canvas-wrapper">
+      <ReactFlowProvider>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          onNodesDelete={onNodesDelete}
+          fitView
+          defaultEdgeOptions={{
+            type: 'step',
+            style: { stroke: 'white', strokeWidth: 2 },
+          }}
+          proOptions={{ hideAttribution: true }}
+          panOnDrag
+          zoomOnScroll
+          zoomOnPinch
+          className="canvas-react-flow-board"
+        >
+          <Background color="#71797E" gap={20} />
+          <Controls />
+          <MiniMap maskColor="rgba(0,0,0,0.3)" pannable zoomable />
+        </ReactFlow>
+      </ReactFlowProvider>
+    </div>
+  );
 }
 
 export default Canvas;

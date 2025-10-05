@@ -4,14 +4,14 @@ import {
   applyEdgeChanges,
   addEdge,
   useReactFlow
-} from 'reactflow';
+} from '@xyflow/react';
 
 
 export const useFlowState = () => {
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
   
-  const { project } = useReactFlow();
+  const { screenToFlowPosition } = useReactFlow();
 
   const nextServerId = useRef(1);
   const nextEntryPointId = useRef(1);
@@ -50,12 +50,10 @@ export const useFlowState = () => {
     const id = `server-${nextServerId.current}`;
     const { innerWidth, innerHeight } = window;
 
-    const position = project({
+    const position = screenToFlowPosition({
       x: innerWidth / 2,
       y: innerHeight / 2,
     });
-
-    console.log(position);
 
     const newNode = {
       id,
@@ -71,15 +69,21 @@ export const useFlowState = () => {
 
     setNodes((nds) => [...nds, newNode]);
     nextServerId.current += 1;
-  }, [setNodes, project]);
+  }, [setNodes, screenToFlowPosition]);
 
   const addEntryPoint = useCallback((distributionProperties, priorityDistribution) => {
     const id = `entry-point-${nextEntryPointId.current}`;
+    const { innerWidth, innerHeight } = window;
+
+    const position = screenToFlowPosition({
+      x: innerWidth / 2,
+      y: innerHeight / 2,
+    });
 
     const newNode = {
       id,
       type: "entryPoint",
-      position: { x: Math.random() * 400, y: Math.random() * 400 },
+      position: position,
       data: { 
         entryPointLabel: `Entry Point ${nextEntryPointId.current}`,
         distributionProperties: distributionProperties,
@@ -90,7 +94,7 @@ export const useFlowState = () => {
 
     setNodes((nds) => [...nds, newNode]);
     nextEntryPointId.current += 1;
-  }, [setNodes]);
+  }, [setNodes, screenToFlowPosition]);
 
 
   return {

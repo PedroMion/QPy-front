@@ -47,7 +47,7 @@ function QueueDisciplineSection({ setQueueProperties }) {
         </select>
       </div>
 
-      {(queueDiscipline === "srt" || queueDiscipline == "priority") && (
+      {(queueDiscipline === "srt" || queueDiscipline === "priority") && (
         <div className="object-properties-element">
           <span className="object-properties-element-text">With Preemption:</span>
           <input

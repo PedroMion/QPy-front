@@ -1,4 +1,4 @@
-import { Handle, Position } from "reactflow";
+import { Handle, Position } from "@xyflow/react";
 import './CanvasElements.css'
 import serverImage from '../../Images/server_image.svg'
 
