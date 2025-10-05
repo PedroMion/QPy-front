@@ -1,8 +1,10 @@
 import './MainPage.css';
 import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
+import { useEdges } from '../Hooks/useEdges';
 import { useFlowState } from '../Hooks/useFlowState';
 import { useObjectPropertiesModals } from '../Hooks/useObjectPropertiesModals';
+import EdgeProperties from '../ObjectPropertiesModal/EdgeProperties';
 import EntryPointProperties from '../ObjectPropertiesModal/EntryPointProperties';
 import ServerProperties from '../ObjectPropertiesModal/ServerProperties';
 
@@ -24,6 +26,11 @@ function MainPage() {
     onModalClosed,
   } = useObjectPropertiesModals();
 
+  const {
+    edgeProperties,
+    onAddEdge,
+  } = useEdges();
+
   return (
     <div className="main-page-container">
         <div className='main-page-nav-bar-container' id='main-page-nav-bar-container'>
@@ -39,7 +46,7 @@ function MainPage() {
           onNodesDelete={onNodesDelete}
           edges={edges}
           onEdgesChange={onEdgesChange}
-          onConnect={onConnect} />
+          onConnect={onAddEdge} />
         
         <div id='main-page-server-properties-wrapper'>
           <ServerProperties addServer={addServer} onModalClosed={onModalClosed} />
@@ -47,6 +54,10 @@ function MainPage() {
 
         <div id='main-page-entry-point-properties-wrapper'>
           <EntryPointProperties addEntryPoint={addEntryPoint} onModalClosed={onModalClosed} />
+        </div>
+
+        <div id='main-page-edge-properties-wrapper'>
+          <EdgeProperties onConnect={onConnect} onModalClosed={onModalClosed} edgeProperties={edgeProperties} />
         </div>
     </div>
   );

@@ -32,12 +32,13 @@ export const useFlowState = () => {
   );
   
  const onConnect = useCallback(
-  (connection) =>
+  (connection, routingProbability) =>
     setEdges((eds) =>
       addEdge(
         {
           ...connection,
           animated: true,
+          data: {"routingProbability": routingProbability},
           style: { stroke: "white", strokeWidth: 2 },
         },
           eds

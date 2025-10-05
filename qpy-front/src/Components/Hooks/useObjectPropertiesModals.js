@@ -11,10 +11,10 @@ export const useObjectPropertiesModals = () => {
 
   const onModalClosed = () => {
     document.getElementById("main-page-server-properties-wrapper").style.display = 'none';
-    document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'none';    
+    document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'none';
+    document.getElementById("main-page-edge-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-nav-bar-container").style.display = 'flex';
   }
-  
 
   return {
     onClickAddServer,
