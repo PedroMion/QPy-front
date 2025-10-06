@@ -4,20 +4,21 @@ import NavBar from '../UserInteractionTools/ToolBar';
 import { useEdges } from '../Hooks/useEdges';
 import { useFlowState } from '../Hooks/useFlowState';
 import { useObjectPropertiesModals } from '../Hooks/useObjectPropertiesModals';
+import { useQueueSimulation } from '../Hooks/useQueueSimulation';
 import EdgeProperties from '../ObjectPropertiesModal/EdgeProperties';
 import EntryPointProperties from '../ObjectPropertiesModal/EntryPointProperties';
 import ServerProperties from '../ObjectPropertiesModal/ServerProperties';
 
 function MainPage() {
-    const {
-      nodes,
-      edges,
-      onNodesChange,
-      onNodesDelete,
-      onEdgesChange,
-      onConnect,
-      addServer,
-      addEntryPoint,
+  const {
+    nodes,
+    edges,
+    onNodesChange,
+    onNodesDelete,
+    onEdgesChange,
+    onConnect,
+    addServer,
+    addEntryPoint,
   } = useFlowState();
 
   const {
@@ -31,13 +32,17 @@ function MainPage() {
     onAddEdge,
   } = useEdges();
 
+  const {
+    simulate,
+  } = useQueueSimulation(nodes, edges);
+
   return (
     <div className="main-page-container">
         <div className='main-page-nav-bar-container' id='main-page-nav-bar-container'>
           <NavBar 
             onClickAddServer={onClickAddServer} 
             onClickAddEntryPoint={onClickAddEntryPoint}
-            onModalClosed={onModalClosed} />
+            simulate={simulate} />
         </div>
 
         <Canvas 

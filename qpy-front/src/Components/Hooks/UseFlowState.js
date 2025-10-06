@@ -38,7 +38,9 @@ export const useFlowState = () => {
         {
           ...connection,
           animated: true,
-          data: {"routingProbability": routingProbability},
+          data: {
+            routingProbability,
+          },
           style: { stroke: "white", strokeWidth: 2 },
         },
           eds

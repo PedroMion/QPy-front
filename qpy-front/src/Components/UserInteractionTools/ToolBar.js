@@ -1,6 +1,6 @@
 import './ToolBar.css';
 
-function ToolBar({onClickAddServer, onClickAddEntryPoint, onModalClosed}) {
+function ToolBar({onClickAddServer, onClickAddEntryPoint, simulate}) {
   return (
     <div className="tool-bar-container">
         <div className='tool-bar-options'>
@@ -25,7 +25,7 @@ function ToolBar({onClickAddServer, onClickAddEntryPoint, onModalClosed}) {
             </div>
         </div>
 
-        <div className='tool-bar-button-container'>
+        <div className='tool-bar-button-container' onClick={simulate}>
           <div className='tool-bar-button'>Simulate</div>
         </div>
     </div>
