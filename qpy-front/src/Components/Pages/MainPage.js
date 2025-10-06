@@ -7,10 +7,10 @@ import { useQueueSimulation } from '../Hooks/useQueueSimulation';
 
 import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
-import EdgeProperties from '../ObjectPropertiesModal/EdgeProperties';
-import EntryPointProperties from '../ObjectPropertiesModal/EntryPointProperties';
-import ServerProperties from '../ObjectPropertiesModal/ServerProperties';
-import ResultsModal from '../ObjectPropertiesModal/ResultsModal';
+import EdgeProperties from '../Modals/ObjectProperties/EdgeProperties';
+import EntryPointProperties from '../Modals/ObjectProperties/EntryPointProperties';
+import ServerProperties from '../Modals/ObjectProperties/ServerProperties';
+import ResultsModal from '../Modals/Results/ResultsModal';
 
 function MainPage() {
   const {

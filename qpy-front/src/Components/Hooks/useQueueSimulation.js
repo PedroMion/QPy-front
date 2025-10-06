@@ -39,7 +39,52 @@ export const useQueueSimulation = (nodes, edges) => {
     return {
       "status_code": 200,
       "json": {
-        "test": "test"
+        "environment": {
+          "processedJobs": 5000,
+          "averageTimeInSystem": 2.5,
+          "averageQueueTime": 1.1,
+          "averageNumberOfJobs": 1.5,
+          "throughput": 1.5,
+          "maxDemand": 2
+        },
+        "servers": [
+          {
+            "serverId": "server-1",
+            "processedJobs": 5000,
+            "averageTimeInServer": 2.5,
+            "averageQueueTime": 1.1,
+            "averageNumberOfJobs": 1.5,
+            "averageVisitsPerJob": 1,
+            "utilization": 0.8,
+            "throughput": 1.5,
+            "demand": 2
+          },
+          {
+            "serverId": "server-2",
+            "processedJobs": 2500,
+            "averageTimeInServer": 1.34,
+            "averageQueueTime": 0.3,
+            "averageNumberOfJobs": 0.5,
+            "averageVisitsPerJob": 0.54,
+            "utilization": 0.23,
+            "throughput": 1.12,
+            "demand": 1.01
+          }
+        ],
+        "priority": [
+          {
+            "priority": 2,
+            "processedJobs": 500,
+            "averageTimeInSystem": 1.2,
+            "averageQueueTime": 0.6,
+          },
+          {
+            "priority": 1,
+            "processedJobs": 4500,
+            "averageTimeInSystem": 2.7,
+            "averageQueueTime": 1.6,
+          }
+        ]
       }
     };
   };
