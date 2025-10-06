@@ -1,13 +1,16 @@
 import './MainPage.css';
-import Canvas from '../Pages/Canvas';
-import NavBar from '../UserInteractionTools/ToolBar';
+
 import { useEdges } from '../Hooks/useEdges';
 import { useFlowState } from '../Hooks/useFlowState';
 import { useObjectPropertiesModals } from '../Hooks/useObjectPropertiesModals';
 import { useQueueSimulation } from '../Hooks/useQueueSimulation';
+
+import Canvas from '../Pages/Canvas';
+import NavBar from '../UserInteractionTools/ToolBar';
 import EdgeProperties from '../ObjectPropertiesModal/EdgeProperties';
 import EntryPointProperties from '../ObjectPropertiesModal/EntryPointProperties';
 import ServerProperties from '../ObjectPropertiesModal/ServerProperties';
+import ResultsModal from '../ObjectPropertiesModal/ResultsModal';
 
 function MainPage() {
   const {
@@ -34,6 +37,7 @@ function MainPage() {
 
   const {
     simulate,
+    simulationResults,
   } = useQueueSimulation(nodes, edges);
 
   return (
@@ -53,16 +57,20 @@ function MainPage() {
           onEdgesChange={onEdgesChange}
           onConnect={onAddEdge} />
         
-        <div id='main-page-server-properties-wrapper'>
+        <div id='main-page-server-properties-wrapper' className='main-page-modal-wrapper'>
           <ServerProperties addServer={addServer} onModalClosed={onModalClosed} />
         </div>
 
-        <div id='main-page-entry-point-properties-wrapper'>
+        <div id='main-page-entry-point-properties-wrapper' className='main-page-modal-wrapper'>
           <EntryPointProperties addEntryPoint={addEntryPoint} onModalClosed={onModalClosed} />
         </div>
 
-        <div id='main-page-edge-properties-wrapper'>
+        <div id='main-page-edge-properties-wrapper' className='main-page-modal-wrapper'>
           <EdgeProperties onConnect={onConnect} onModalClosed={onModalClosed} edgeProperties={edgeProperties} />
+        </div>
+
+        <div id='main-page-results-properties-wrapper' className='main-page-modal-wrapper'>
+          <ResultsModal onModalClosed={onModalClosed} simulationResults={simulationResults} />
         </div>
     </div>
   );

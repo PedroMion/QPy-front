@@ -1,8 +1,47 @@
+import { useState } from 'react';
+import { useObjectPropertiesModals } from './useObjectPropertiesModals';
+
 export const useQueueSimulation = (nodes, edges) => {
-  const simulate = () => {
+    const [simulationResults, setSimulationResults] = useState({});
+
+    const {
+      showLoading,
+      finishLoading,
+      onShowResultsModal,
+    } = useObjectPropertiesModals();
+  
+    const simulate = () => {
     showLoading();
+    
     const requestJson = mapVariablesToJsonRequest(nodes, edges);
-    console.log(requestJson);
+    const response = sendRequestToQpy(requestJson);
+    
+    finishLoading();
+
+    if(isResponseValid(response)) {
+        setSimulationResults(response.json)
+        onShowResultsModal();
+    } else {
+        showErrorToUser(response);
+    };
+  };
+
+  const showErrorToUser = () => {
+    //
+  };
+
+  const isResponseValid = (response) => {
+    return response.status_code === 200;
+  };
+
+  const sendRequestToQpy = (requestJson) => {
+    // Mock response
+    return {
+      "status_code": 200,
+      "json": {
+        "test": "test"
+      }
+    };
   };
 
   const mapVariablesToJsonRequest = (nodes, edges) => {
@@ -35,7 +74,7 @@ export const useQueueSimulation = (nodes, edges) => {
     }
 
     return devices;
-  }
+  };
 
   const getConnectionsFromEdgesData = (edges) => {
     var connections = [];
@@ -49,14 +88,10 @@ export const useQueueSimulation = (nodes, edges) => {
     }
 
     return connections;
-  }
-
-  const showLoading = () => {
-    //document.getElementById("main-page-nav-bar-container").style.display = 'none';
-    //document.getElementById("main-page-loading-wrapper").style.display = 'flex';
   };
 
   return {
-    simulate
+    simulate,
+    simulationResults,
   };
 };
