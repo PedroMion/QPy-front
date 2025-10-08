@@ -6,7 +6,7 @@ export const useObjectPropertiesModals = () => {
 
   const onClickAddEntryPoint = () => {
     document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'flex';
-    document.getElementById("main-page-nav-bar-container").style.display = 'none';    
+    document.getElementById("main-page-nav-bar-container").style.display = 'none';
   };
 
   const onModalClosed = () => {
