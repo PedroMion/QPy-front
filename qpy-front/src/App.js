@@ -8,7 +8,7 @@ function App() {
     <div className="app-container">
       <ReactFlowProvider>
         <MainPage />
-      </ReactFlowProvider>;
+      </ReactFlowProvider>
     </div>
   );
 }
