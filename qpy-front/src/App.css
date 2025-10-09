@@ -2,46 +2,14 @@
   text-align: center;
   width: 100vw;
   max-width: 100vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.app-container-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .app-container-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.app-container-header {
-  background-color: #282c34;
+  height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.app-container-link {
-  color: #61dafb;
-}
-
-@keyframes app-container-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  overflow: hidden;
 }
 
 .react-flow__node, .react-flow__node * {

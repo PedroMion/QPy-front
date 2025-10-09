@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-    width: 20rem;
+    padding: 0 2rem 2rem 2rem;
+    width: 30rem;
     height: auto;
     max-height: 80vh;
     border-radius: 2rem;
@@ -16,17 +16,24 @@
 
 .results-modal-header {
     width: 100%;
+    height: 4.5rem;
+    min-height: 4.5rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
     position: sticky;
     top: 0;
     background-color: #333333;
-    padding-bottom: 0.5rem;
     z-index: 2;
+}
+
+.results-modal-header-text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .results-modal-header-button {
@@ -58,4 +65,44 @@
     width: 100%;
     margin-top: 1rem;
     word-break: break-word;
+}
+
+.results-modal-subsection {
+    margin-top: 1rem;
+}
+
+#environment-section, #server-section, #priority-section {
+    display: none;
+}
+
+.results-modal-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.results-modal-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.results-modal-container::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 10px;
+    transition: background 0.2s ease, width 0.2s ease;
+}
+
+.results-modal-container::-webkit-scrollbar-thumb:hover {
+    background: #888888
+}
+
+.results-modal-section-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.results-modal-section-container::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 8px;
+}
+
+.results-modal-container {
+    scrollbar-width: thin;
+    scrollbar-color: #555555 transparent;
 }

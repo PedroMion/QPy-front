@@ -17,7 +17,7 @@ function PrioritySection({ simulationResults }) {
         />
       </div>
 
-      <div id="priority-section">
+      <div id="priority-section" className='results-modal-section-container'>
         {priorities.map((p) => (
           <div key={p.priority} className="results-modal-subsection">
             <div className="results-modal-subsection-title">

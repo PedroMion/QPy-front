@@ -13,14 +13,14 @@ function ServersSection({ simulationResults }) {
         />
       </div>
 
-      <div id="server-section">
+      <div id="server-section" className='results-modal-section-container'>
         {servers.length === 0 ? (
           <div className="results-modal-section-field-value">No server data available</div>
         ) : (
           servers.map((server) => (
             <div key={server.serverId} className="results-modal-subsection">
               <div className="results-modal-subsection-title">
-                {server.serverId}
+                {'Server ' + server.serverId.split("-")[1]}
               </div>
 
               <div className="results-modal-section-field">

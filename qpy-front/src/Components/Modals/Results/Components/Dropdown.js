@@ -7,10 +7,12 @@ function Dropdown({sectionId, sectionTitle}) {
     const handleClick = () => {
         if(isOpen) {
             document.getElementById(sectionId).style.display = 'none';
+            document.getElementById('dropdown-button'+sectionId).style.transform = 'rotate(0deg)';
         } else {
             document.getElementById(sectionId).style.display = 'block';
+            document.getElementById('dropdown-button'+sectionId).style.transform = 'rotate(180deg)';
         }
-
+        
         setIsOpen(!isOpen);
     }
 
@@ -20,8 +22,8 @@ function Dropdown({sectionId, sectionTitle}) {
                 {sectionTitle}
             </div>
 
-            <div className='dropdown-button' onClick={handleClick}>
-                ⌄
+            <div className='dropdown-button' id={'dropdown-button' + sectionId} onClick={handleClick}>
+                ▼
             </div>
         </div>
     )
