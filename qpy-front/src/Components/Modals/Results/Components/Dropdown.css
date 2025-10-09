@@ -1,0 +1,23 @@
+.dropdown-container {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.dropdown-title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.dropdown-button {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    height: 3rem;
+    width: 2rem;
+}

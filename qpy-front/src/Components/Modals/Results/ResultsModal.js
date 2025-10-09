@@ -1,5 +1,7 @@
 import './ResultsModal.css';
 import EnvironmentSection from './Sections/EnvironmentSection';
+import PrioritySection from './Sections/PrioritySection';
+import ServersSection from './Sections/ServersSection';
 
 function ResultsModal({onModalClosed, simulationResults}) {
   return (
@@ -10,6 +12,10 @@ function ResultsModal({onModalClosed, simulationResults}) {
       </div>
 
       <EnvironmentSection simulationResults={simulationResults} />
+
+      <ServersSection simulationResults={simulationResults} />
+
+      <PrioritySection simulationResults={simulationResults} />
     </div>
   );
 }

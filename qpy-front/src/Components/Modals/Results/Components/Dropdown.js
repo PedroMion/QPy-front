@@ -8,8 +8,10 @@ function Dropdown({sectionId, sectionTitle}) {
         if(isOpen) {
             document.getElementById(sectionId).style.display = 'none';
         } else {
-            document.getElementById("main-page-nav-bar-container").style.display = 'flex';
+            document.getElementById(sectionId).style.display = 'block';
         }
+
+        setIsOpen(!isOpen);
     }
 
     return (
