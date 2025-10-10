@@ -1,12 +1,22 @@
 export const useObjectPropertiesModals = () => {
-  const onClickAddServer = () => {
-    document.getElementById("main-page-server-properties-wrapper").style.display = 'flex';
+  const setEnvironmentOnModalOpen = () => {
     document.getElementById("main-page-nav-bar-container").style.display = 'none';
+    document.getElementById("main-page-black-screen").style.display = 'flex';
+  }
+
+  const setEnvironmentOnModalClose = () => {
+    document.getElementById("main-page-nav-bar-container").style.display = 'flex';
+    document.getElementById("main-page-black-screen").style.display = 'none';
+  }
+  
+  const onClickAddServer = () => {
+    setEnvironmentOnModalOpen();
+    document.getElementById("main-page-server-properties-wrapper").style.display = 'flex';
   };
 
   const onClickAddEntryPoint = () => {
+    setEnvironmentOnModalOpen();
     document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'flex';
-    document.getElementById("main-page-nav-bar-container").style.display = 'none';
   };
 
   const onModalClosed = () => {
@@ -14,13 +24,13 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edge-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-results-properties-wrapper").style.display = 'none';
-    document.getElementById("main-page-nav-bar-container").style.display = 'flex';
+    setEnvironmentOnModalClose();
   };
 
   const onShowResultsModal = () => {
     onModalClosed();
 
-    document.getElementById("main-page-nav-bar-container").style.display = 'none';
+    setEnvironmentOnModalOpen();
     document.getElementById("main-page-results-properties-wrapper").style.display = 'flex';
   };
 

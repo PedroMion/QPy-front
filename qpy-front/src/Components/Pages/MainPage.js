@@ -72,6 +72,10 @@ function MainPage() {
         <div id='main-page-results-properties-wrapper' className='main-page-modal-wrapper'>
           <ResultsModal onModalClosed={onModalClosed} simulationResults={simulationResults} />
         </div>
+
+        <div id='main-page-black-screen'>
+          
+        </div>
     </div>
   );
 }

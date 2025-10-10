@@ -1,23 +1,34 @@
 import { useState, useEffect } from "react";
 import "../ObjectProperties.css";
 
-function QueueDisciplineSection({ setQueueProperties }) {
+function QueueDisciplineSection({ setQueueProperties, resetFlag }) {
+  const firstComeFirstServed = "fcfs";
+  const shortestRemainingTime = "srt";
+  const roundRobin = "rr";
+  const priorityQueue = "priority";
+  
   const [queueDiscipline, setQueueDiscipline] = useState("fcfs");
 
   const [withPreemption, setWithPreemption] = useState(false);
   const [preemptionTime, setPreemptionTime] = useState("");
 
   useEffect(() => {
+    setWithPreemption(false);
+    setPreemptionTime("");
+    setQueueDiscipline(firstComeFirstServed);
+  }, [resetFlag]);
+
+  useEffect(() => {
     let params = {};
 
     switch (queueDiscipline) {
-      case "srt":
+      case shortestRemainingTime:
         params = { withPreemption };
         break;
-      case "rr":
+      case roundRobin:
         params = { preemptionTime };
         break;
-      case "priority":
+      case priorityQueue:
         params = { withPreemption };
         break;
       default:
@@ -31,7 +42,7 @@ function QueueDisciplineSection({ setQueueProperties }) {
   }, [queueDiscipline, withPreemption, preemptionTime, setQueueProperties]);
 
   return (
-    <div className="queue-discipline-section-container">
+    <div className="object-properties-section-container">
       <div className="object-properties-element">
         <span className="object-properties-element-text">Queue Discipline:</span>
         <select
@@ -47,7 +58,7 @@ function QueueDisciplineSection({ setQueueProperties }) {
         </select>
       </div>
 
-      {(queueDiscipline === "srt" || queueDiscipline === "priority") && (
+      {(queueDiscipline === shortestRemainingTime || queueDiscipline === priorityQueue) && (
         <div className="object-properties-element">
           <span className="object-properties-element-text">With Preemption:</span>
           <input
@@ -59,7 +70,7 @@ function QueueDisciplineSection({ setQueueProperties }) {
         </div>
       )}
 
-      {queueDiscipline === "rr" && (
+      {queueDiscipline === roundRobin && (
         <div className="object-properties-element">
           <span className="object-properties-element-text">Preemption Time:</span>
           <input

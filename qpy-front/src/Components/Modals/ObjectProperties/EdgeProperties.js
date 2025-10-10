@@ -4,6 +4,13 @@ import './ObjectProperties.css';
 function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
   const [routingProbability, setRoutingProbability] = useState(0);
 
+
+  const resetCurrentConfiguration = () => {
+    setRoutingProbability(0);
+
+    document.getElementById('edge-properties-input').value = null;
+  };
+
   const validateField = () => {
     return routingProbability >= 0 && routingProbability <= 1;
   };
@@ -16,6 +23,7 @@ function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
 
     onConnect(edgeProperties, routingProbability);
     onModalClosed();
+    resetCurrentConfiguration();
   };
 
   return (
@@ -28,6 +36,7 @@ function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
       <div className="object-properties-element">
         <span className="object-properties-element-text">Routing Probability</span>
         <input
+            id = "edge-properties-input"
             type="number"
             className='object-properties-element-input'
             step="0.01"

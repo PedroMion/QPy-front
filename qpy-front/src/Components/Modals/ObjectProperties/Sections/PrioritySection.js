@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function PrioritySection({ setPriorityDistribution }) {
+function PrioritySection({ setPriorityDistribution, resetFlag }) {
     const [hasPriority, setHasPriority] = useState(false);
     const [pairs, setPairs] = useState([{ key: 0, prob: "" }]);
+
+    useEffect(() => {
+        setHasPriority(false);
+        setPairs([{ key:0, prob: ""}]);
+
+        document.getElementById('priority-checkbox').checked = false;
+    }, [resetFlag]);
 
     const handleChange = (index, field, value) => {
         const newPairs = [...pairs];
@@ -20,10 +27,10 @@ function PrioritySection({ setPriorityDistribution }) {
     };
 
     return (
-        <div className="priority-section-container">
+        <div className="object-properties-section-container">
             <div className='object-properties-element'>
                 <span className='object-properties-element-text'>Priority Distribution:</span>
-                <input type="checkbox" className='object-properties-element-input'
+                <input type="checkbox" id="priority-checkbox" className='object-properties-element-input'
                        onChange={(e) => setHasPriority(e.target.checked)} />
             </div>
 

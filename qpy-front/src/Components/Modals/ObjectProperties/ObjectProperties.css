@@ -6,16 +6,18 @@
     padding: 2rem;
     width: 20rem;
     height: auto;
+    min-height: 18rem;
+    max-height: 90vh;
     border-radius: 2rem;
     background-color: #333333;
 }
 
 .object-properties-header {
     width: 95%;
-    height: 3rem;
+    height: 4rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     color: #D5CCC7;
     font-size: 1.5rem;
@@ -33,6 +35,18 @@
 .object-properties-header-button:hover {
     transform: scale(1.10);
     color: #D70040;
+}
+
+.object-properties-header-text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.object-properties-section-container {
+    width: 100%;
+    display: block;
+    flex-direction: column;
 }
 
 .object-properties-element {
@@ -120,4 +134,36 @@
 
 #entry-point-button {
     width: 8rem;
+}
+
+.object-properties-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.object-properties-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.object-properties-container::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 10px;
+    transition: background 0.2s ease, width 0.2s ease;
+}
+
+.object-properties-container::-webkit-scrollbar-thumb:hover {
+    background: #888888
+}
+
+.object-properties-section-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.object-properties-section-container::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 8px;
+}
+
+.object-properties-container {
+    scrollbar-width: thin;
+    scrollbar-color: #555555 transparent;
 }

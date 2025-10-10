@@ -7,6 +7,12 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
   const [distributionProperties, setDistributionProperties] = useState({});
   const [priorityDistribution, setPriorityDistribution] = useState(false);
 
+  const [resetFlag, setResetFlag] = useState(0);
+
+  const resetCurrentConfiguration = () => {
+    setResetFlag(resetFlag + 1);
+  }
+
   const validateField = (data) => {
     return Object.values(data.params).every(value => value !== "");
   };
@@ -19,6 +25,7 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
 
     addEntryPoint(distributionProperties, priorityDistribution);
     onModalClosed();
+    resetCurrentConfiguration();
   };
 
   return (
@@ -31,10 +38,12 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
       <DistributionSection
         sectionTitle="Arrival Distribution:"
         setDistributionProperties={setDistributionProperties}
+        resetFlag={resetFlag}
       />
 
       <PrioritySection 
         setPriorityDistribution={setPriorityDistribution}
+        resetFlag={resetFlag}
       />
 
       <div className='object-properties-button-container'>

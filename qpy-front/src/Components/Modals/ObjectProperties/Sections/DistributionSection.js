@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import "../ObjectProperties.css";
 
-function DistributionSection({ sectionTitle, setDistributionProperties }) {
-  const [distribution, setDistribution] = useState("exponential");
+function DistributionSection({ sectionTitle, setDistributionProperties, resetFlag }) {
+  const exponential = "exponential";
+  const constant = "constant";
+  const uniform = "uniform";
+  const normal = "normal";
+
+  const [distribution, setDistribution] = useState(exponential);
 
   const [lambda, setLambda] = useState("");
   const [constantValue, setConstantValue] = useState("");
@@ -12,19 +17,29 @@ function DistributionSection({ sectionTitle, setDistributionProperties }) {
   const [sigma, setSigma] = useState("");
 
   useEffect(() => {
+    setLambda("");
+    setConstantValue("");
+    setLowerBound("");
+    setUpperBound("");
+    setMu("");
+    setSigma("");
+    setDistribution(exponential);
+  }, [resetFlag]);
+
+  useEffect(() => {
     let params = {};
 
     switch (distribution) {
-      case "exponential":
+      case exponential:
         params = { lambda };
         break;
-      case "constant":
+      case constant:
         params = { value: constantValue };
         break;
-      case "uniform":
+      case uniform:
         params = { lower: lowerBound, upper: upperBound };
         break;
-      case "normal":
+      case normal:
         params = { mu, sigma };
         break;
       default:
@@ -38,7 +53,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties }) {
   }, [distribution, lambda, constantValue, lowerBound, upperBound, mu, sigma, setDistributionProperties]);
 
   return (
-    <div className="distribution-section-container">
+    <div className="object-properties-section-container">
       <div className="object-properties-element">
         <span className="object-properties-element-text">{sectionTitle}</span>
         <select
@@ -53,7 +68,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties }) {
         </select>
       </div>
 
-      {distribution === "exponential" && (
+      {distribution === exponential && (
         <div className="object-properties-element">
           <span className="object-properties-element-text">Lambda (Jobs per second):</span>
           <input
@@ -65,7 +80,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties }) {
         </div>
       )}
 
-      {distribution === "constant" && (
+      {distribution === constant && (
         <div className="object-properties-element">
           <span className="object-properties-element-text">Value (Jobs per second):</span>
           <input
@@ -77,7 +92,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties }) {
         </div>
       )}
 
-      {distribution === "uniform" && (
+      {distribution === uniform && (
         <div className="object-properties-multiple-element-container">
           <div className="object-properties-element">
             <span className="object-properties-element-text">Lower Bound:</span>
@@ -100,7 +115,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties }) {
         </div>
       )}
 
-      {distribution === "normal" && (
+      {distribution === normal && (
         <div className="object-properties-multiple-element-container">
           <div className="object-properties-element">
             <span className="object-properties-element-text">Mu:</span>

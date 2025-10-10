@@ -6,10 +6,16 @@ import QueueDisciplineSection from './Sections/QueueDisciplineSection';
 function ServerProperties({addServer, onModalClosed}) {
   const [distributionProperties, setDistributionProperties] = useState({});
   const [queueProperties, setQueueProperties] = useState({});
+  
+  const [resetFlag, setResetFlag] = useState(0);
 
   const validateField = (data) => {
     return Object.values(data.params).every(value => value !== "");
   };
+
+  const resetCurrentConfiguration = () => {
+    setResetFlag(resetFlag + 1);
+  }
 
   const handleAddServer = () => {
     if (!validateField(distributionProperties)) {
@@ -24,6 +30,7 @@ function ServerProperties({addServer, onModalClosed}) {
 
     addServer(distributionProperties, queueProperties);
     onModalClosed();
+    resetCurrentConfiguration();
   };
 
   return (
@@ -36,10 +43,12 @@ function ServerProperties({addServer, onModalClosed}) {
       <DistributionSection
         sectionTitle="Service Distribution:"
         setDistributionProperties={setDistributionProperties}
+        resetFlag={resetFlag}
       />
 
       <QueueDisciplineSection 
         setQueueProperties={setQueueProperties}
+        resetFlag={resetFlag}
       />
 
       <div className='object-properties-button-container'>
