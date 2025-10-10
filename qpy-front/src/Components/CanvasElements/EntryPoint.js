@@ -6,7 +6,8 @@ function EntryPoint({ data }) {
     return (
         <div className="entry-point-container node-container">
             <div className="node-image-container">
-                <img src={lambdaImage} alt="Entry Point" className="node-image" />
+                <img src={lambdaImage} alt="Source" className="node-image" />
+                <div className="node-image-label">{data.sourceLabel}</div>
             </div>
 
             <Handle className="node-handle" type="source" position={Position.Right} />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function PrioritySection({ setPriorityDistribution, resetFlag }) {
+function PriorityDistributionSection({ setPriorityDistribution, resetFlag }) {
     const [hasPriority, setHasPriority] = useState(false);
     const [pairs, setPairs] = useState([{ key: 0, prob: "" }]);
 
@@ -37,9 +37,10 @@ function PrioritySection({ setPriorityDistribution, resetFlag }) {
             {hasPriority && (
                 <div className="object-properties-multiple-element-container">
                 {pairs.map((pair, index) => (
-                    <div key={index} className="object-properties-element">
+                    <div key={index} className="object-properties-multiple-element">
                         <input
                             type="number"
+                            className="object-properties-multiple-element-input"
                             min="0"
                             value={pair.key}
                             onChange={(e) => handleChange(index, "key", e.target.value)}
@@ -47,6 +48,7 @@ function PrioritySection({ setPriorityDistribution, resetFlag }) {
                         />
                         <input
                             type="number"
+                            className="object-properties-multiple-element-input"
                             step="0.01"
                             min="0"
                             max="1"
@@ -66,4 +68,4 @@ function PrioritySection({ setPriorityDistribution, resetFlag }) {
     );
 }
 
-export default PrioritySection;
+export default PriorityDistributionSection;

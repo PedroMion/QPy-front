@@ -1,27 +1,30 @@
 .object-properties-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     width: 20rem;
     height: auto;
-    min-height: 18rem;
     max-height: 90vh;
     border-radius: 2rem;
     background-color: #333333;
+    overflow-y: auto;
 }
 
 .object-properties-header {
     width: 95%;
-    height: 4rem;
+    background-color: #333333;
+    min-height: 4rem;
+    width: 100%;
+    padding-top: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     color: #D5CCC7;
     font-size: 1.5rem;
-    position: fixed;
+    position: sticky;
     top: 0;
 }
 
@@ -130,6 +133,22 @@
     flex-direction: column;
     width: auto;
     height: auto;
+}
+
+.object-properties-multiple-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    height: auto;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+.object-properties-multiple-element-input {
+    width: 7rem;
 }
 
 #entry-point-button {

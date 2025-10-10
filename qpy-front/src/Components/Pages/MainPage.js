@@ -20,6 +20,8 @@ function MainPage() {
     onNodesDelete,
     onEdgesChange,
     onConnect,
+    onNodeClick,
+    onEdgeClick,
     addServer,
     addEntryPoint,
   } = useFlowState();
@@ -33,7 +35,7 @@ function MainPage() {
   const {
     edgeProperties,
     onAddEdge,
-  } = useEdges();
+  } = useEdges(onConnect);
 
   const {
     simulate,
@@ -55,7 +57,9 @@ function MainPage() {
           onNodesDelete={onNodesDelete}
           edges={edges}
           onEdgesChange={onEdgesChange}
-          onConnect={onAddEdge} />
+          onConnect={onAddEdge}
+          onNodeClick={onNodeClick}
+          onEdgeClick={onEdgeClick} />
         
         <div id='main-page-server-properties-wrapper' className='main-page-modal-wrapper'>
           <ServerProperties addServer={addServer} onModalClosed={onModalClosed} />

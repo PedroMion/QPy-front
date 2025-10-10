@@ -28,6 +28,7 @@
     display: none;
     width: auto;
     height: auto;
+    max-height: 90vh;
 }
 
 #main-page-black-screen {

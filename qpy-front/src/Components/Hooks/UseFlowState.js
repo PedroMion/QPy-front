@@ -10,6 +10,8 @@ import {
 export const useFlowState = () => {
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
+
+  const [selectedElement, setSelectedElement] = useState(null);
   
   const { screenToFlowPosition } = useReactFlow();
 
@@ -42,12 +44,25 @@ export const useFlowState = () => {
             routingProbability,
           },
           style: { stroke: "white", strokeWidth: 2 },
+          label: routingProbability,
         },
           eds
         )
       ),
     [setEdges]
   );
+
+  const onNodeClick = useCallback((_, node) => {
+    setSelectedElement({ type: 'node', element: node });
+
+    console.log(node);
+  }, []);
+
+  const onEdgeClick = useCallback((_, edge) => {
+    setSelectedElement({ type: 'edge', element: edge });
+
+    console.log(edge)
+  }, []);
 
   const addServer = useCallback((distributionProperties, queueDiscipline) => {
     const id = `server-${nextServerId.current}`;
@@ -88,7 +103,7 @@ export const useFlowState = () => {
       type: "entryPoint",
       position: position,
       data: { 
-        entryPointLabel: `Entry Point ${nextEntryPointId.current}`,
+        sourceLabel: `Source ${nextEntryPointId.current}`,
         distributionProperties: distributionProperties,
         priorityDistribution: priorityDistribution
       },
@@ -107,6 +122,8 @@ export const useFlowState = () => {
     onNodesDelete,
     onEdgesChange,
     onConnect,
+    onNodeClick,
+    onEdgeClick,
     addServer,
     addEntryPoint,
   };

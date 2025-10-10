@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ObjectProperties.css';
 import DistributionSection from './Sections/DistributionSection';
-import PrioritySection from './Sections/PrioritySection';
+import PriorityDistributionSection from './Sections/PriorityDistributionSection';
 
 function EntryPointProperties({addEntryPoint, onModalClosed}) {
   const [distributionProperties, setDistributionProperties] = useState({});
@@ -41,7 +41,7 @@ function EntryPointProperties({addEntryPoint, onModalClosed}) {
         resetFlag={resetFlag}
       />
 
-      <PrioritySection 
+      <PriorityDistributionSection 
         setPriorityDistribution={setPriorityDistribution}
         resetFlag={resetFlag}
       />
