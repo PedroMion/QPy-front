@@ -9,7 +9,8 @@ import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
 import EdgeProperties from '../Modals/ObjectProperties/EdgeProperties';
 import EntryPointProperties from '../Modals/ObjectProperties/EntryPointProperties';
-import ServerProperties from '../Modals/ObjectProperties/ServerProperties';
+import AddServerProperties from '../Modals/ObjectProperties/AddServerProperties';
+import EditServerProperties from '../Modals/ObjectProperties/EditServerProperties';
 import ResultsModal from '../Modals/Results/ResultsModal';
 
 function MainPage() {
@@ -24,6 +25,8 @@ function MainPage() {
     onEdgeClick,
     addServer,
     addEntryPoint,
+    updateServer,
+    selectedElement,
   } = useFlowState();
 
   const {
@@ -62,7 +65,11 @@ function MainPage() {
           onEdgeClick={onEdgeClick} />
         
         <div id='main-page-server-properties-wrapper' className='main-page-modal-wrapper'>
-          <ServerProperties addServer={addServer} onModalClosed={onModalClosed} />
+          <AddServerProperties addServer={addServer} onModalClosed={onModalClosed} />
+        </div>
+
+        <div id='main-page-edit-server-wrapper' className='main-page-modal-wrapper'>
+          <EditServerProperties server={selectedElement} updateServer={updateServer} onModalClosed={onModalClosed} />
         </div>
 
         <div id='main-page-entry-point-properties-wrapper' className='main-page-modal-wrapper'>

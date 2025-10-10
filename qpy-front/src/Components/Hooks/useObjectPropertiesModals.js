@@ -14,6 +14,11 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-server-properties-wrapper").style.display = 'flex';
   };
 
+  const onClickEditServer = () => {
+    setEnvironmentOnModalOpen();
+    document.getElementById("main-page-edit-server-wrapper").style.display = 'flex';
+  }
+
   const onClickAddEntryPoint = () => {
     setEnvironmentOnModalOpen();
     document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'flex';
@@ -24,6 +29,7 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edge-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-results-properties-wrapper").style.display = 'none';
+    document.getElementById("main-page-edit-server-wrapper").style.display = 'none';
     setEnvironmentOnModalClose();
   };
 
@@ -47,6 +53,7 @@ export const useObjectPropertiesModals = () => {
   return {
     onClickAddServer,
     onClickAddEntryPoint,
+    onClickEditServer,
     onModalClosed,
     onShowResultsModal,
     showLoading,

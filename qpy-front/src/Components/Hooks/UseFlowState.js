@@ -5,13 +5,18 @@ import {
   addEdge,
   useReactFlow
 } from '@xyflow/react';
+import { useObjectPropertiesModals } from './useObjectPropertiesModals';
 
 
 export const useFlowState = () => {
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
 
-  const [selectedElement, setSelectedElement] = useState(null);
+  const [selectedElement, setSelectedElement] = useState({});
+
+  const {
+    onClickEditServer,
+  } = useObjectPropertiesModals();
   
   const { screenToFlowPosition } = useReactFlow();
 
@@ -53,13 +58,13 @@ export const useFlowState = () => {
   );
 
   const onNodeClick = useCallback((_, node) => {
-    setSelectedElement({ type: 'node', element: node });
+    setSelectedElement(node);
 
-    console.log(node);
-  }, []);
+    onClickEditServer();
+  }, [onClickEditServer]);
 
   const onEdgeClick = useCallback((_, edge) => {
-    setSelectedElement({ type: 'edge', element: edge });
+    setSelectedElement(edge);
 
     console.log(edge)
   }, []);
@@ -114,6 +119,21 @@ export const useFlowState = () => {
     nextEntryPointId.current += 1;
   }, [setNodes, screenToFlowPosition]);
 
+  const updateServer = useCallback((id, newData) => {
+    setNodes((nodes) =>
+      nodes.map((node) => {
+        if (node.id !== id) return node;
+
+        return {
+          ...node,
+          data: {
+            ...node.data,
+            ...newData,
+          },
+        };
+      })
+    );
+  }, [setNodes]);
 
   return {
     nodes,
@@ -126,5 +146,7 @@ export const useFlowState = () => {
     onEdgeClick,
     addServer,
     addEntryPoint,
+    updateServer,
+    selectedElement,
   };
 };
