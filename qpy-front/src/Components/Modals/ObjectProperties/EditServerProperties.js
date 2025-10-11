@@ -4,7 +4,7 @@ function EditServerModal({ server, updateServer, onModalClosed }) {
     if (!server?.data) return null;
 
     const handleSubmit = (distribution, queue) => {
-        updateServer(server.id, distribution, queue);
+        updateServer(distribution, queue);
         onModalClosed();
     };
 

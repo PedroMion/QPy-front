@@ -65,8 +65,6 @@ export const useFlowState = () => {
 
   const onEdgeClick = useCallback((_, edge) => {
     setSelectedElement(edge);
-
-    console.log(edge)
   }, []);
 
   const addServer = useCallback((distributionProperties, queueDiscipline) => {
@@ -119,21 +117,22 @@ export const useFlowState = () => {
     nextEntryPointId.current += 1;
   }, [setNodes, screenToFlowPosition]);
 
-  const updateServer = useCallback((id, newData) => {
+  const updateServer = useCallback((distributionProperties, queueDiscipline) => {    
     setNodes((nodes) =>
       nodes.map((node) => {
-        if (node.id !== id) return node;
+        if (node.id !== selectedElement.id) return node;
 
         return {
           ...node,
           data: {
-            ...node.data,
-            ...newData,
+            serverLabel: selectedElement.data.serverLabel,
+            distributionProperties: distributionProperties,
+            queueDiscipline: queueDiscipline
           },
         };
       })
     );
-  }, [setNodes]);
+  }, [selectedElement, setNodes]);
 
   return {
     nodes,
