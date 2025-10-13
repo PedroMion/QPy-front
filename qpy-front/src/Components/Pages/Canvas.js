@@ -1,6 +1,6 @@
 import './Canvas.css';
 import '@xyflow/react/dist/style.css';
-import EntryPoint from '../CanvasElements/EntryPoint';
+import JobSource from '../CanvasElements/JobSource';
 import Server from '../CanvasElements/Server';
 import {
   ReactFlow,
@@ -11,7 +11,7 @@ import {
 
 const nodeTypes = {
   server: Server,
-  entryPoint: EntryPoint,
+  jobSource: JobSource,
 };
 
 function Canvas({

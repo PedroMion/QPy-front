@@ -3,7 +3,7 @@ import "../ObjectProperties.css";
 import DistributionSection from "../Sections/DistributionSection";
 import PriorityDistributionSection from "../Sections/PriorityDistributionSection";
 
-function GenericEntryPointModal({
+function GenericJobSourceModal({
     title,
     submitLabel,
     onSubmit,
@@ -57,4 +57,4 @@ function GenericEntryPointModal({
     );
 }
 
-export default GenericEntryPointModal;
+export default GenericJobSourceModal;

@@ -16,13 +16,13 @@ export const useFlowState = () => {
 
   const {
     onClickEditServer,
-    onClickEditEntryPoint,
+    onClickEditJobSource,
   } = useObjectPropertiesModals();
   
   const { screenToFlowPosition } = useReactFlow();
 
   const nextServerId = useRef(1);
-  const nextEntryPointId = useRef(1);
+  const nextJobSourceId = useRef(1);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -64,9 +64,9 @@ export const useFlowState = () => {
     if(node.type === "server") {
       onClickEditServer();
     } else {
-      onClickEditEntryPoint();
+      onClickEditJobSource();
     }
-  }, [onClickEditServer, onClickEditEntryPoint]);
+  }, [onClickEditServer, onClickEditJobSource]);
 
   const onEdgeClick = useCallback((_, edge) => {
     setSelectedElement(edge);
@@ -97,8 +97,8 @@ export const useFlowState = () => {
     nextServerId.current += 1;
   }, [setNodes, screenToFlowPosition]);
 
-  const addEntryPoint = useCallback((distributionProperties, priorityDistribution) => {
-    const id = `entry-point-${nextEntryPointId.current}`;
+  const addJobSource = useCallback((distributionProperties, priorityDistribution) => {
+    const id = `job-source-${nextJobSourceId.current}`;
     const { innerWidth, innerHeight } = window;
 
     const position = screenToFlowPosition({
@@ -108,10 +108,10 @@ export const useFlowState = () => {
 
     const newNode = {
       id,
-      type: "entryPoint",
+      type: "jobSource",
       position: position,
       data: { 
-        sourceLabel: `Source ${nextEntryPointId.current}`,
+        jobSourceLabel: `Source ${nextJobSourceId.current}`,
         distributionProperties: distributionProperties,
         priorityDistribution: priorityDistribution
       },
@@ -119,7 +119,7 @@ export const useFlowState = () => {
     };
 
     setNodes((nds) => [...nds, newNode]);
-    nextEntryPointId.current += 1;
+    nextJobSourceId.current += 1;
   }, [setNodes, screenToFlowPosition]);
 
   const updateServer = useCallback((distributionProperties, queueDiscipline) => {    
@@ -139,7 +139,7 @@ export const useFlowState = () => {
     );
   }, [selectedElement, setNodes]);
 
-  const updateEntryPoint = useCallback((distributionProperties, priorityDistribution) => {
+  const updateJobSource = useCallback((distributionProperties, priorityDistribution) => {
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id !== selectedElement.id) return node;
@@ -147,7 +147,7 @@ export const useFlowState = () => {
         return {
           ...node,
           data: {
-            sourceLabel: selectedElement.data.sourceLabel,
+            jobSourceLabel: selectedElement.data.jobSourceLabel,
             distributionProperties: distributionProperties,
             priorityDistribution: priorityDistribution
           },
@@ -166,9 +166,9 @@ export const useFlowState = () => {
     onNodeClick,
     onEdgeClick,
     addServer,
-    addEntryPoint,
+    addJobSource,
     updateServer,
-    updateEntryPoint,
+    updateJobSource,
     selectedElement,
   };
 };

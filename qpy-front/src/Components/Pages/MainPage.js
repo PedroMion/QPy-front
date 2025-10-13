@@ -8,11 +8,11 @@ import { useQueueSimulation } from '../Hooks/useQueueSimulation';
 import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
 import EdgeProperties from '../Modals/ObjectProperties/Edge/EdgeProperties';
-import AddEntryPointProperties from '../Modals/ObjectProperties/EntryPoint/AddEntryPointProperties';
+import AddJobSourceProperties from '../Modals/ObjectProperties/JobSource/AddJobSourceProperties';
 import AddServerProperties from '../Modals/ObjectProperties/Server/AddServerProperties';
 import EditServerProperties from '../Modals/ObjectProperties/Server/EditServerProperties';
 import ResultsModal from '../Modals/Results/ResultsModal';
-import EditEntryPointProperties from '../Modals/ObjectProperties/EntryPoint/EditEntryPointProperties';
+import EditJobSourceProperties from '../Modals/ObjectProperties/JobSource/EditJobSourceProperties';
 
 function MainPage() {
   const {
@@ -25,15 +25,15 @@ function MainPage() {
     onNodeClick,
     onEdgeClick,
     addServer,
-    addEntryPoint,
+    addJobSource,
     updateServer,
-    updateEntryPoint,
+    updateJobSource,
     selectedElement,
   } = useFlowState();
 
   const {
     onClickAddServer,
-    onClickAddEntryPoint,
+    onClickAddJobSource,
     onModalClosed,
   } = useObjectPropertiesModals();
 
@@ -52,7 +52,7 @@ function MainPage() {
         <div className='main-page-nav-bar-container' id='main-page-nav-bar-container'>
           <NavBar 
             onClickAddServer={onClickAddServer} 
-            onClickAddEntryPoint={onClickAddEntryPoint}
+            onClickAddJobSource={onClickAddJobSource}
             simulate={simulate} />
         </div>
 
@@ -74,12 +74,12 @@ function MainPage() {
           <EditServerProperties server={selectedElement} updateServer={updateServer} onModalClosed={onModalClosed} />
         </div>
 
-        <div id='main-page-entry-point-properties-wrapper' className='main-page-modal-wrapper'>
-          <AddEntryPointProperties addEntryPoint={addEntryPoint} onModalClosed={onModalClosed} />
+        <div id='main-page-job-source-properties-wrapper' className='main-page-modal-wrapper'>
+          <AddJobSourceProperties addJobSource={addJobSource} onModalClosed={onModalClosed} />
         </div>
 
-        <div id='main-page-edit-entry-point-wrapper' className='main-page-modal-wrapper'>
-          <EditEntryPointProperties entryPoint={selectedElement} updateEntryPoint={updateEntryPoint} onModalClosed={onModalClosed} />
+        <div id='main-page-edit-job-source-wrapper' className='main-page-modal-wrapper'>
+          <EditJobSourceProperties jobSource={selectedElement} updateJobSource={updateJobSource} onModalClosed={onModalClosed} />
         </div>
 
         <div id='main-page-edge-properties-wrapper' className='main-page-modal-wrapper'>

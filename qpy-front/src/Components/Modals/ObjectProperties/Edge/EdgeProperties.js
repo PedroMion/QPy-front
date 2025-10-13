@@ -50,7 +50,7 @@ function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
       <div className='object-properties-button-container'>
         <div
           className='object-properties-button'
-          id='entry-point-button'
+          id='job-source-button'
           onClick={handleEdgeConnection}
         >
           Add Edge

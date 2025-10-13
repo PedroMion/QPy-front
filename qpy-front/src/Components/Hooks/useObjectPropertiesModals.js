@@ -19,23 +19,23 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-edit-server-wrapper").style.display = 'flex';
   }
 
-  const onClickAddEntryPoint = () => {
+  const onClickAddJobSource = () => {
     setEnvironmentOnModalOpen();
-    document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'flex';
+    document.getElementById("main-page-job-source-properties-wrapper").style.display = 'flex';
   };
 
-  const onClickEditEntryPoint = () => {
+  const onClickEditJobSource = () => {
     setEnvironmentOnModalOpen();
-    document.getElementById("main-page-edit-entry-point-wrapper").style.display = 'flex';
+    document.getElementById("main-page-edit-job-source-wrapper").style.display = 'flex';
   }
 
   const onModalClosed = () => {
     document.getElementById("main-page-server-properties-wrapper").style.display = 'none';
-    document.getElementById("main-page-entry-point-properties-wrapper").style.display = 'none';
+    document.getElementById("main-page-job-source-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edge-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-results-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edit-server-wrapper").style.display = 'none';
-    document.getElementById("main-page-edit-entry-point-wrapper").style.display = 'none';
+    document.getElementById("main-page-edit-job-source-wrapper").style.display = 'none';
     setEnvironmentOnModalClose();
   };
 
@@ -58,9 +58,9 @@ export const useObjectPropertiesModals = () => {
 
   return {
     onClickAddServer,
-    onClickAddEntryPoint,
+    onClickAddJobSource,
     onClickEditServer,
-    onClickEditEntryPoint,
+    onClickEditJobSource,
     onModalClosed,
     onShowResultsModal,
     showLoading,

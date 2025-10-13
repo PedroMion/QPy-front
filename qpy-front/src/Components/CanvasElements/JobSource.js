@@ -2,9 +2,9 @@ import { Handle, Position } from "@xyflow/react";
 import './CanvasElements.css'
 import lambdaImage from '../../Images/lambda_image.png'
 
-function EntryPoint({ data }) {
+function JobSource({ data }) {
     return (
-        <div className="entry-point-container node-container">
+        <div className="job-source-container node-container">
             <div className="node-image-container">
                 <img src={lambdaImage} alt="Source" className="node-image" />
                 <div className="node-image-label">{data.sourceLabel}</div>
@@ -15,4 +15,4 @@ function EntryPoint({ data }) {
     );
 }
 
-export default EntryPoint
+export default JobSource

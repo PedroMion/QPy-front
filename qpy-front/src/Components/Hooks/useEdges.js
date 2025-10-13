@@ -7,12 +7,12 @@ export const useEdges = (onConnect) => {
       onConnect(connection, null);
     }
 
-    const originIsEntryPoint = (source) => {
-      return source.startsWith('entry');
+    const originIsJobSource = (source) => {
+      return source.startsWith('job');
     }
 
     const onAddEdge = (edgeData) => {
-      if(originIsEntryPoint(edgeData.source)) {
+      if(originIsJobSource(edgeData.source)) {
         addEdge(edgeData);
       } else {
         setEdgeProperties(edgeData);

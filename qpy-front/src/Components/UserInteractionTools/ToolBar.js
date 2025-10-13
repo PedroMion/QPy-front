@@ -1,6 +1,6 @@
 import './ToolBar.css';
 
-function ToolBar({onClickAddServer, onClickAddEntryPoint, simulate}) {
+function ToolBar({onClickAddServer, onClickAddJobSource, simulate}) {
   return (
     <div className="tool-bar-container">
         <div className='tool-bar-options'>
@@ -14,13 +14,13 @@ function ToolBar({onClickAddServer, onClickAddEntryPoint, simulate}) {
               </div>
             </div>
 
-            <div className='tool-bar-element' onClick={onClickAddEntryPoint}>
+            <div className='tool-bar-element' onClick={onClickAddJobSource}>
               <div className='tool-bar-element-text' id='tool-bar-element-text-lambda'>
                 λ
               </div>
 
               <div className='tool-bar-element-text'>
-                Add Entry Point
+                Add Job Source
               </div>
             </div>
         </div>
