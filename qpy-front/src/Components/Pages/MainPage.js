@@ -7,11 +7,12 @@ import { useQueueSimulation } from '../Hooks/useQueueSimulation';
 
 import Canvas from '../Pages/Canvas';
 import NavBar from '../UserInteractionTools/ToolBar';
-import EdgeProperties from '../Modals/ObjectProperties/EdgeProperties';
-import EntryPointProperties from '../Modals/ObjectProperties/EntryPointProperties';
-import AddServerProperties from '../Modals/ObjectProperties/AddServerProperties';
-import EditServerProperties from '../Modals/ObjectProperties/EditServerProperties';
+import EdgeProperties from '../Modals/ObjectProperties/Edge/EdgeProperties';
+import AddEntryPointProperties from '../Modals/ObjectProperties/EntryPoint/AddEntryPointProperties';
+import AddServerProperties from '../Modals/ObjectProperties/Server/AddServerProperties';
+import EditServerProperties from '../Modals/ObjectProperties/Server/EditServerProperties';
 import ResultsModal from '../Modals/Results/ResultsModal';
+import EditEntryPointProperties from '../Modals/ObjectProperties/EntryPoint/EditEntryPointProperties';
 
 function MainPage() {
   const {
@@ -26,6 +27,7 @@ function MainPage() {
     addServer,
     addEntryPoint,
     updateServer,
+    updateEntryPoint,
     selectedElement,
   } = useFlowState();
 
@@ -51,7 +53,7 @@ function MainPage() {
           <NavBar 
             onClickAddServer={onClickAddServer} 
             onClickAddEntryPoint={onClickAddEntryPoint}
-            simulate={simulate} />
+            simulate={() => {console.log(nodes[0])}} />
         </div>
 
         <Canvas 
@@ -73,7 +75,11 @@ function MainPage() {
         </div>
 
         <div id='main-page-entry-point-properties-wrapper' className='main-page-modal-wrapper'>
-          <EntryPointProperties addEntryPoint={addEntryPoint} onModalClosed={onModalClosed} />
+          <AddEntryPointProperties addEntryPoint={addEntryPoint} onModalClosed={onModalClosed} />
+        </div>
+
+        <div id='main-page-edit-entry-point-wrapper' className='main-page-modal-wrapper'>
+          <EditEntryPointProperties entryPoint={selectedElement} updateEntryPoint={updateEntryPoint} onModalClosed={onModalClosed} />
         </div>
 
         <div id='main-page-edge-properties-wrapper' className='main-page-modal-wrapper'>

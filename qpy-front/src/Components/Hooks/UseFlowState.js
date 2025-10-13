@@ -16,6 +16,7 @@ export const useFlowState = () => {
 
   const {
     onClickEditServer,
+    onClickEditEntryPoint,
   } = useObjectPropertiesModals();
   
   const { screenToFlowPosition } = useReactFlow();
@@ -60,8 +61,12 @@ export const useFlowState = () => {
   const onNodeClick = useCallback((_, node) => {
     setSelectedElement(node);
 
-    onClickEditServer();
-  }, [onClickEditServer]);
+    if(node.type === "server") {
+      onClickEditServer();
+    } else {
+      onClickEditEntryPoint();
+    }
+  }, [onClickEditServer, onClickEditEntryPoint]);
 
   const onEdgeClick = useCallback((_, edge) => {
     setSelectedElement(edge);
@@ -134,6 +139,23 @@ export const useFlowState = () => {
     );
   }, [selectedElement, setNodes]);
 
+  const updateEntryPoint = useCallback((distributionProperties, priorityDistribution) => {
+    setNodes((nodes) =>
+      nodes.map((node) => {
+        if (node.id !== selectedElement.id) return node;
+
+        return {
+          ...node,
+          data: {
+            sourceLabel: selectedElement.data.sourceLabel,
+            distributionProperties: distributionProperties,
+            priorityDistribution: priorityDistribution
+          },
+        };
+      })
+    );
+  }, [selectedElement, setNodes])
+
   return {
     nodes,
     edges,
@@ -146,6 +168,7 @@ export const useFlowState = () => {
     addServer,
     addEntryPoint,
     updateServer,
+    updateEntryPoint,
     selectedElement,
   };
 };

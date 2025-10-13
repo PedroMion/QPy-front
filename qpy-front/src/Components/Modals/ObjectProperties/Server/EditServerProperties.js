@@ -1,4 +1,4 @@
-import GenericServerModal from "./Modals/GenericServerModal";
+import GenericServerModal from "./GenericServerModal";
 
 function EditServerModal({ server, updateServer, onModalClosed }) {
     if (!server?.data) return null;

@@ -1,4 +1,4 @@
-import GenericServerModal from "./Modals/GenericServerModal";
+import GenericServerModal from "./GenericServerModal";
 
 function AddServerProperties({ addServer, onModalClosed }) {
   const handleSubmit = (distribution, queue) => {

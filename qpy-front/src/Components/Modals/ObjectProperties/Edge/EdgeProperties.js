@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './ObjectProperties.css';
+import '../ObjectProperties.css';
 
 function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
   const [routingProbability, setRoutingProbability] = useState(0);
