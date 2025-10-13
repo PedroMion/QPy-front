@@ -53,7 +53,7 @@ function MainPage() {
           <NavBar 
             onClickAddServer={onClickAddServer} 
             onClickAddEntryPoint={onClickAddEntryPoint}
-            simulate={() => {console.log(nodes[0])}} />
+            simulate={simulate} />
         </div>
 
         <Canvas 
