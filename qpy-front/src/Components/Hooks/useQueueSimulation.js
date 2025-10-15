@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
+import { useNetworkConfiguration } from './useNetworkConfiguration';
 
 export const useQueueSimulation = (nodes, edges) => {
+    const {
+      getNetworkConfiguration,
+    } = useNetworkConfiguration();
+
     const [simulationResults, setSimulationResults] = useState({});
 
     const {
@@ -94,6 +99,7 @@ export const useQueueSimulation = (nodes, edges) => {
     var connections = getConnectionsFromEdgesData(edges);
 
     return {
+        "networkConfiguration": getNetworkConfiguration(),
         "devices": devices,
         "connections": connections
     }

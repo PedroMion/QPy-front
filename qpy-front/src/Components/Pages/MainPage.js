@@ -6,6 +6,7 @@ import { useObjectPropertiesModals } from '../Hooks/useObjectPropertiesModals';
 import { useQueueSimulation } from '../Hooks/useQueueSimulation';
 
 import Canvas from '../Pages/Canvas';
+import Header from '../UserInteractionTools/Header';
 import NavBar from '../UserInteractionTools/ToolBar';
 import EdgeProperties from '../Modals/ObjectProperties/Edge/EdgeProperties';
 import AddJobSourceProperties from '../Modals/ObjectProperties/JobSource/AddJobSourceProperties';
@@ -49,6 +50,12 @@ function MainPage() {
 
   return (
     <div className="main-page-container">
+        <div className='main-page-header-container'>
+          <Header
+            setNetworkProperties={(data) => console.log(data)}
+          />
+        </div>
+        
         <div className='main-page-nav-bar-container' id='main-page-nav-bar-container'>
           <NavBar 
             onClickAddServer={onClickAddServer} 
