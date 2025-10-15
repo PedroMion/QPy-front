@@ -15,6 +15,7 @@ import AddServerProperties from '../Modals/ObjectProperties/Server/AddServerProp
 import EditServerProperties from '../Modals/ObjectProperties/Server/EditServerProperties';
 import ResultsModal from '../Modals/Results/ResultsModal';
 import EditJobSourceProperties from '../Modals/ObjectProperties/JobSource/EditJobSourceProperties';
+import Loading from '../Modals/General/Loading';
 
 function MainPage() {
   const {
@@ -77,7 +78,7 @@ function MainPage() {
           <NavBar 
             onClickAddServer={onClickAddServer} 
             onClickAddJobSource={onClickAddJobSource}
-            networkType={networkType} CLOSED={CLOSED}
+            networkType={networkType} OPEN={OPEN}
             simulate={simulate} />
         </div>
 
@@ -113,6 +114,10 @@ function MainPage() {
 
         <div id='main-page-results-properties-wrapper' className='main-page-modal-wrapper'>
           <ResultsModal onModalClosed={onModalClosed} simulationResults={simulationResults} />
+        </div>
+
+        <div id='main-page-loading-wrapper' className='main-page-modal-wrapper'>
+          <Loading />
         </div>
 
         <div id='main-page-black-screen'>

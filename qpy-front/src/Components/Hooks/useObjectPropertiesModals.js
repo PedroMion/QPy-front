@@ -47,13 +47,13 @@ export const useObjectPropertiesModals = () => {
   };
 
   const showLoading = () => {
-    //document.getElementById("main-page-nav-bar-container").style.display = 'none';
-    //document.getElementById("main-page-loading-wrapper").style.display = 'flex';
+    setEnvironmentOnModalOpen();
+    document.getElementById("main-page-loading-wrapper").style.display = 'flex';    
   };
 
   const finishLoading = () => {
-    //document.getElementById("main-page-nav-bar-container").style.display = 'none';
-    //document.getElementById("main-page-loading-wrapper").style.display = 'flex';
+    document.getElementById("main-page-loading-wrapper").style.display = 'none';    
+    setEnvironmentOnModalClose();
   };
 
   return {
@@ -64,6 +64,6 @@ export const useObjectPropertiesModals = () => {
     onModalClosed,
     onShowResultsModal,
     showLoading,
-    finishLoading
+    finishLoading,
   };
 };

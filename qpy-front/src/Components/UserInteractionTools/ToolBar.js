@@ -1,6 +1,6 @@
 import './ToolBar.css';
 
-function ToolBar({onClickAddServer, onClickAddJobSource, networkType, CLOSED, simulate}) {
+function ToolBar({onClickAddServer, onClickAddJobSource, networkType, OPEN, simulate}) {
   return (
     <div className="tool-bar-container">
         <div className='tool-bar-options'>
@@ -14,7 +14,7 @@ function ToolBar({onClickAddServer, onClickAddJobSource, networkType, CLOSED, si
               </div>
             </div>
 
-            {networkType === CLOSED && (
+            {networkType === OPEN && (
               <div className='tool-bar-element' onClick={onClickAddJobSource}>
                 <div className='tool-bar-element-text' id='tool-bar-element-text-lambda'>
                   λ
