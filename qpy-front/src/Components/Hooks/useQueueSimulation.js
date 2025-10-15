@@ -8,6 +8,7 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
     showLoading,
     finishLoading,
     onShowResultsModal,
+    onError,
   } = useObjectPropertiesModals();
 
   const simulate = () => {
@@ -27,7 +28,7 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   };
 
   const showErrorToUser = () => {
-    //
+    onError();
   };
 
   const isResponseValid = (response) => {

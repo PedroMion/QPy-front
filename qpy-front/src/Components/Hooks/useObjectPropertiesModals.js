@@ -36,6 +36,8 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-results-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edit-server-wrapper").style.display = 'none';
     document.getElementById("main-page-edit-job-source-wrapper").style.display = 'none';
+    document.getElementById('main-page-error-modal-wrapper').style.display = 'none';
+    document.getElementById("main-page-loading-wrapper").style.display = 'none';
     setEnvironmentOnModalClose();
   };
 
@@ -46,13 +48,20 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-results-properties-wrapper").style.display = 'flex';
   };
 
+  const onError = () => {
+    onModalClosed();
+
+    setEnvironmentOnModalOpen();
+    document.getElementById('main-page-error-modal-wrapper').style.display = 'flex';
+  }
+
   const showLoading = () => {
     setEnvironmentOnModalOpen();
     document.getElementById("main-page-loading-wrapper").style.display = 'flex';    
   };
 
   const finishLoading = () => {
-    document.getElementById("main-page-loading-wrapper").style.display = 'none';    
+    document.getElementById("main-page-loading-wrapper").style.display = 'none';
     setEnvironmentOnModalClose();
   };
 
@@ -65,5 +74,6 @@ export const useObjectPropertiesModals = () => {
     onShowResultsModal,
     showLoading,
     finishLoading,
+    onError,
   };
 };

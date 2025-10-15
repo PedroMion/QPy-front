@@ -16,6 +16,7 @@ import EditServerProperties from '../Modals/ObjectProperties/Server/EditServerPr
 import ResultsModal from '../Modals/Results/ResultsModal';
 import EditJobSourceProperties from '../Modals/ObjectProperties/JobSource/EditJobSourceProperties';
 import Loading from '../Modals/General/Loading';
+import ErrorModal from '../Modals/General/ErrorModal';
 
 function MainPage() {
   const {
@@ -114,6 +115,10 @@ function MainPage() {
 
         <div id='main-page-results-properties-wrapper' className='main-page-modal-wrapper'>
           <ResultsModal onModalClosed={onModalClosed} simulationResults={simulationResults} />
+        </div>
+
+        <div id='main-page-error-modal-wrapper' className='main-page-modal-wrapper'>
+          <ErrorModal onModalClosed={onModalClosed} />
         </div>
 
         <div id='main-page-loading-wrapper' className='main-page-modal-wrapper'>
