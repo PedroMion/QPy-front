@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
 
 export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
+  const [time, setTime] = useState(1000);
+  const [warmup, setWarmup] = useState(0);
+  
   const [simulationResults, setSimulationResults] = useState({});
 
   const {
@@ -94,12 +97,21 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   const mapVariablesToJsonRequest = (nodes, edges) => {
     var devices = getArrivalsAndServersFromNodesData(nodes);
     var connections = getConnectionsFromEdgesData(edges);
+    var networkParameters = getNetworkParametersFromVariables();
 
     return {
+      "networkParameters": networkParameters,
       "networkConfiguration": getNetworkConfiguration(),
       "devices": devices,
       "connections": connections
     }
+  };
+
+  const getNetworkParametersFromVariables = () => {
+    return {
+      "simulationTime": time,
+      "warmupTime": warmup
+    };
   };
 
   const getArrivalsAndServersFromNodesData = (nodes) => {
@@ -139,6 +151,10 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   };
 
   return {
+    time,
+    setTime,
+    warmup,
+    setWarmup,
     simulate,
     simulationResults,
   };

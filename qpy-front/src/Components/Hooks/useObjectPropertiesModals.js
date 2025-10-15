@@ -29,6 +29,11 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-edit-job-source-wrapper").style.display = 'flex';
   }
 
+  const onClickSimulate = () => {
+    setEnvironmentOnModalOpen();
+    document.getElementById("main-page-simulation-properties-wrapper").style.display = 'flex';
+  }
+
   const onModalClosed = () => {
     document.getElementById("main-page-server-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-job-source-properties-wrapper").style.display = 'none';
@@ -36,6 +41,7 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-results-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edit-server-wrapper").style.display = 'none';
     document.getElementById("main-page-edit-job-source-wrapper").style.display = 'none';
+    document.getElementById("main-page-simulation-properties-wrapper").style.display = 'none';
     document.getElementById('main-page-error-modal-wrapper').style.display = 'none';
     document.getElementById("main-page-loading-wrapper").style.display = 'none';
     setEnvironmentOnModalClose();
@@ -70,6 +76,7 @@ export const useObjectPropertiesModals = () => {
     onClickAddJobSource,
     onClickEditServer,
     onClickEditJobSource,
+    onClickSimulate,
     onModalClosed,
     onShowResultsModal,
     showLoading,

@@ -17,6 +17,7 @@ import ResultsModal from '../Modals/Results/ResultsModal';
 import EditJobSourceProperties from '../Modals/ObjectProperties/JobSource/EditJobSourceProperties';
 import Loading from '../Modals/General/Loading';
 import ErrorModal from '../Modals/General/ErrorModal';
+import SimulationProperties from '../Modals/ObjectProperties/Simulation/SimulationProperties';
 
 function MainPage() {
   const {
@@ -39,6 +40,7 @@ function MainPage() {
   const {
     onClickAddServer,
     onClickAddJobSource,
+    onClickSimulate,
     onModalClosed,
   } = useObjectPropertiesModals();
 
@@ -60,6 +62,10 @@ function MainPage() {
   } = useNetworkConfiguration(setEnvironmentWhenNetworkChanges);
 
   const {
+    time,
+    setTime,
+    warmup,
+    setWarmup,
     simulate,
     simulationResults,
   } = useQueueSimulation(nodes, edges, getNetworkConfiguration);
@@ -80,7 +86,7 @@ function MainPage() {
             onClickAddServer={onClickAddServer} 
             onClickAddJobSource={onClickAddJobSource}
             networkType={networkType} OPEN={OPEN}
-            simulate={simulate} />
+            simulate={onClickSimulate} />
         </div>
 
         <Canvas 
@@ -111,6 +117,14 @@ function MainPage() {
 
         <div id='main-page-edge-properties-wrapper' className='main-page-modal-wrapper'>
           <EdgeProperties onConnect={onConnect} onModalClosed={onModalClosed} edgeProperties={edgeProperties} />
+        </div>
+
+        <div id='main-page-simulation-properties-wrapper' className='main-page-modal-wrapper'>
+          <SimulationProperties 
+            onModalClosed={onModalClosed} simulate={simulate} 
+            time={time} setTime={setTime}
+            warmup={warmup} setWarmup={setWarmup}
+          />
         </div>
 
         <div id='main-page-results-properties-wrapper' className='main-page-modal-wrapper'>
