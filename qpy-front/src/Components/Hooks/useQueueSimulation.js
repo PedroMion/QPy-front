@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
-import { useNetworkConfiguration } from './useNetworkConfiguration';
 
-export const useQueueSimulation = (nodes, edges) => {
-  const {
-    getNetworkConfiguration,
-  } = useNetworkConfiguration();
-
+export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   const [simulationResults, setSimulationResults] = useState({});
 
   const {
@@ -40,6 +35,7 @@ export const useQueueSimulation = (nodes, edges) => {
   };
 
   const sendRequestToQpy = (requestJson) => {
+    console.log(requestJson);
     // Mock response
     return {
       "status_code": 200,

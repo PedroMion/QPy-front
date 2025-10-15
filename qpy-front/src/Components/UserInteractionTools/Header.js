@@ -1,20 +1,17 @@
 import './Header.css';
 import icon from '../../Images/icon.png';
 
-import { useNetworkConfiguration } from '../Hooks/useNetworkConfiguration';
-
-function Header() {
-    const {
-        OPEN,
-        CLOSED,
-        networkType,
-        numOfTerminals,
-        setNumOfTerminals,
-        averageThinkTime,
-        setAverageThinkTime,
-        handleNetworkChange,
-    } = useNetworkConfiguration();
-
+function Header({
+    OPEN, 
+    CLOSED, 
+    networkType, 
+    numOfTerminals, 
+    setNumOfTerminals, 
+    averageThinkTime, 
+    setAverageThinkTime, 
+    handleNetworkChange
+}) {
+    
     return (
         <div className="header-container">
             <div className='header-image-container'>

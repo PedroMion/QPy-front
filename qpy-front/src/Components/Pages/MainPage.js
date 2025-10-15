@@ -4,6 +4,7 @@ import { useEdges } from '../Hooks/useEdges';
 import { useFlowState } from '../Hooks/useFlowState';
 import { useObjectPropertiesModals } from '../Hooks/useObjectPropertiesModals';
 import { useQueueSimulation } from '../Hooks/useQueueSimulation';
+import { useNetworkConfiguration } from '../Hooks/useNetworkConfiguration';
 
 import Canvas from '../Pages/Canvas';
 import Header from '../UserInteractionTools/Header';
@@ -44,15 +45,30 @@ function MainPage() {
   } = useEdges(onConnect);
 
   const {
+    OPEN,
+    CLOSED,
+    networkType,
+    numOfTerminals,
+    setNumOfTerminals,
+    averageThinkTime,
+    setAverageThinkTime,
+    handleNetworkChange,
+    getNetworkConfiguration,
+  } = useNetworkConfiguration();
+
+  const {
     simulate,
     simulationResults,
-  } = useQueueSimulation(nodes, edges);
+  } = useQueueSimulation(nodes, edges, getNetworkConfiguration);
 
   return (
     <div className="main-page-container">
         <div className='main-page-header-container'>
           <Header
-            setNetworkProperties={(data) => console.log(data)}
+            OPEN={OPEN} CLOSED={CLOSED} networkType={networkType}
+            numOfTerminals={numOfTerminals} setNumOfTerminals={setNumOfTerminals}
+            averageThinkTime={averageThinkTime} setAverageThinkTime={setAverageThinkTime}
+            handleNetworkChange={handleNetworkChange}
           />
         </div>
         

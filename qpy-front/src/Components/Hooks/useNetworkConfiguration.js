@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export function useNetworkConfiguration() {
     const OPEN = "Open";
@@ -18,7 +18,7 @@ export function useNetworkConfiguration() {
         resetConfiguration();
     };
 
-    const getNetworkConfiguration = () => {
+    const getNetworkConfiguration = useCallback(() => {
         if (networkType === OPEN) {
             return {'type': OPEN}
         } else {
@@ -28,7 +28,7 @@ export function useNetworkConfiguration() {
                 'averageThinkTime': averageThinkTime,
             }
         }
-    }
+    }, [networkType, numOfTerminals, averageThinkTime]);
 
     return {
         OPEN,
