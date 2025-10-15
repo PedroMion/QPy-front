@@ -31,6 +31,7 @@ function MainPage() {
     updateServer,
     updateJobSource,
     selectedElement,
+    setEnvironmentWhenNetworkChanges,
   } = useFlowState();
 
   const {
@@ -54,7 +55,7 @@ function MainPage() {
     setAverageThinkTime,
     handleNetworkChange,
     getNetworkConfiguration,
-  } = useNetworkConfiguration();
+  } = useNetworkConfiguration(setEnvironmentWhenNetworkChanges);
 
   const {
     simulate,
@@ -76,6 +77,7 @@ function MainPage() {
           <NavBar 
             onClickAddServer={onClickAddServer} 
             onClickAddJobSource={onClickAddJobSource}
+            networkType={networkType} CLOSED={CLOSED}
             simulate={simulate} />
         </div>
 

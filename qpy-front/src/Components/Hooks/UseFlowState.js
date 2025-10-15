@@ -6,6 +6,7 @@ import {
   useReactFlow
 } from '@xyflow/react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
+import { useNetworkConfiguration } from './useNetworkConfiguration';
 
 
 export const useFlowState = () => {
@@ -18,6 +19,10 @@ export const useFlowState = () => {
     onClickEditServer,
     onClickEditJobSource,
   } = useObjectPropertiesModals();
+
+  const {
+    CLOSED,
+  } = useNetworkConfiguration();
   
   const { screenToFlowPosition } = useReactFlow();
 
@@ -122,6 +127,28 @@ export const useFlowState = () => {
     nextJobSourceId.current += 1;
   }, [setNodes, screenToFlowPosition]);
 
+  const addTerminal = useCallback(() => {
+    const id = `terminal`;
+    const { innerWidth, innerHeight } = window;
+
+    const position = screenToFlowPosition({
+      x: innerWidth / 2,
+      y: innerHeight / 2,
+    });
+
+    const newNode = {
+      id,
+      type: "terminal",
+      position: position,
+      data: { 
+        label: `Terminals`,
+      },
+      style: { width: 80, height: 80 }
+    };
+
+    setNodes((nds) => [...nds, newNode]);
+  }, [setNodes, screenToFlowPosition]);
+
   const updateServer = useCallback((distributionProperties, queueDiscipline) => {    
     setNodes((nodes) =>
       nodes.map((node) => {
@@ -156,6 +183,18 @@ export const useFlowState = () => {
     );
   }, [selectedElement, setNodes])
 
+  const setEnvironmentWhenNetworkChanges = useCallback((networkType) => {
+    setNodes([]);
+    setEdges([]);
+    setSelectedElement({});
+    nextServerId.current = 1;
+    nextJobSourceId.current = 1;
+
+    if(networkType === CLOSED) {
+      addTerminal();
+    }
+  }, [setEdges, setNodes, setSelectedElement, CLOSED, addTerminal])
+
   return {
     nodes,
     edges,
@@ -170,5 +209,6 @@ export const useFlowState = () => {
     updateServer,
     updateJobSource,
     selectedElement,
+    setEnvironmentWhenNetworkChanges,
   };
 };

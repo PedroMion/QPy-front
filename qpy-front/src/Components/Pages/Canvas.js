@@ -2,6 +2,7 @@ import './Canvas.css';
 import '@xyflow/react/dist/style.css';
 import JobSource from '../CanvasElements/JobSource';
 import Server from '../CanvasElements/Server';
+import Terminal from '../CanvasElements/Terminal';
 import {
   ReactFlow,
   Background,
@@ -12,6 +13,7 @@ import {
 const nodeTypes = {
   server: Server,
   jobSource: JobSource,
+  terminal: Terminal,
 };
 
 function Canvas({

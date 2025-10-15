@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-export function useNetworkConfiguration() {
+export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
     const OPEN = "Open";
     const CLOSED = "Closed";
 
@@ -16,6 +16,7 @@ export function useNetworkConfiguration() {
     const handleNetworkChange = (value) => {
         setNetworkType(value);
         resetConfiguration();
+        setEnvironmentWhenNetworkChanges(value);
     };
 
     const getNetworkConfiguration = useCallback(() => {
