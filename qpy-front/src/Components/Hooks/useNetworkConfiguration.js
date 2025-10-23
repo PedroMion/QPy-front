@@ -24,7 +24,7 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
             return {'type': OPEN}
         } else {
             return {
-                'type': CLOSED,
+                'networkType': CLOSED,
                 'numberOfTerminals': numOfTerminals,
                 'averageThinkTime': averageThinkTime,
             }

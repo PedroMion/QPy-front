@@ -39,7 +39,7 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   };
 
   const sendRequestToQpy = (requestJson) => {
-    console.log(requestJson);
+    console.log(JSON.stringify(requestJson));
     // Mock response
     return {
       "status_code": 200,
@@ -120,13 +120,13 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
     for(const node of nodes) {
       if(node.type === "server") {
         devices.servers.push({
-          "device_id": node.id,
+          "deviceId": node.id,
           "distribution": node.data.distributionProperties,
           "queue": node.data.queueDiscipline,
         })
       } else {
         devices.arrivals.push({
-          "device_id": node.id,
+          "deviceId": node.id,
           "distribution": node.data.distributionProperties,
           "priorityDistribution": node.data.priorityDistribution,
         })
