@@ -5,12 +5,12 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
     const CLOSED = "Closed";
 
     const [networkType, setNetworkType] = useState(OPEN);
-    const [numOfTerminals, setNumOfTerminals] = useState(1);
-    const [averageThinkTime, setAverageThinkTime] = useState(0);
+    const [numberOfTerminals, setNumberOfTerminals] = useState(1);
+    const [thinkTimeDistribution, setThinkTimeDistribution] = useState({});
 
     const resetConfiguration = () => {
-        setNumOfTerminals(1);
-        setAverageThinkTime(0);
+        setNumberOfTerminals(1);
+        setThinkTimeDistribution({});
     };
 
     const handleNetworkChange = (value) => {
@@ -25,21 +25,21 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
         } else {
             return {
                 'networkType': CLOSED,
-                'numberOfTerminals': numOfTerminals,
-                'averageThinkTime': averageThinkTime,
+                'numberOfTerminals': numberOfTerminals,
+                'thinkTimeDistribution': thinkTimeDistribution,
             }
         }
-    }, [networkType, numOfTerminals, averageThinkTime]);
+    }, [networkType, numberOfTerminals, thinkTimeDistribution]);
 
     return {
         OPEN,
         CLOSED,
         networkType,
         setNetworkType,
-        numOfTerminals,
-        setNumOfTerminals,
-        averageThinkTime,
-        setAverageThinkTime,
+        numberOfTerminals,
+        setNumberOfTerminals,
+        thinkTimeDistribution,
+        setThinkTimeDistribution,
         handleNetworkChange,
         getNetworkConfiguration,
     };

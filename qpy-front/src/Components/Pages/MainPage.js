@@ -53,10 +53,10 @@ function MainPage() {
     OPEN,
     CLOSED,
     networkType,
-    numOfTerminals,
-    setNumOfTerminals,
-    averageThinkTime,
-    setAverageThinkTime,
+    numberOfTerminals,
+    setNumberOfTerminals,
+    thinkTimeDistribution,
+    setThinkTimeDistribution,
     handleNetworkChange,
     getNetworkConfiguration,
   } = useNetworkConfiguration(setEnvironmentWhenNetworkChanges);
@@ -75,8 +75,6 @@ function MainPage() {
         <div className='main-page-header-container'>
           <Header
             OPEN={OPEN} CLOSED={CLOSED} networkType={networkType}
-            numOfTerminals={numOfTerminals} setNumOfTerminals={setNumOfTerminals}
-            averageThinkTime={averageThinkTime} setAverageThinkTime={setAverageThinkTime}
             handleNetworkChange={handleNetworkChange}
           />
         </div>
@@ -124,6 +122,9 @@ function MainPage() {
             onModalClosed={onModalClosed} simulate={simulate} 
             time={time} setTime={setTime}
             warmup={warmup} setWarmup={setWarmup}
+            numberOfTerminals={numberOfTerminals} setNumberOfTerminals={setNumberOfTerminals}
+            thinkTimeDistribution={thinkTimeDistribution} setThinkTimeDistribution={setThinkTimeDistribution}
+            CLOSED={CLOSED} networkType={networkType}
           />
         </div>
 
