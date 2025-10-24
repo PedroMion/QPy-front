@@ -26,7 +26,7 @@ function SimulationProperties({
     const validateField = (data) => Object.values(data.params).every(v => v !== "");
 
     const handleSubmit = () => {
-        if (!validateField(thinkTimeDistribution)) {
+        if (networkType === CLOSED && !validateField(thinkTimeDistribution)) {
             alert("Please fill all fields.");
             return;
         }

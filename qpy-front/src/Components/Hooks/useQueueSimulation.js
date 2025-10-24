@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
+import { getScaledDistribution } from '../Utils/DistributionUtils';
 
 export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   const [time, setTime] = useState(1000);
@@ -125,21 +126,43 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
           "queue": node.data.queueDiscipline,
         })
       } else {
-        devices.arrivals.push({
-          "deviceId": node.id,
-          "distribution": node.data.distributionProperties,
-          "priorityDistribution": node.data.priorityDistribution,
-        })
+        var destinations = getDestinationsFromArrival(node);
+        
+        for(const dest of destinations.destinations) {
+          devices.arrivals.push({
+            "deviceId": node.id,
+            "destination": dest,
+            "distribution": destinations.distribution,
+            "priorityDistribution": node.data.priorityDistribution,
+          })
+        }
       }
     }
 
     return devices;
   };
 
+  const getDestinationsFromArrival = (arrival) => {
+    var responseObject = {'destinations': [], 'distribution': arrival.distributionProperties};
+
+    for(const conn of edges) {
+      if(conn.source === arrival.id) {
+        responseObject.destinations.push(conn.target);
+      }
+    }
+
+    const num = responseObject.destinations.length;
+    responseObject.distribution = getScaledDistribution(arrival.data.distributionProperties, num);
+
+    return responseObject;
+  };
+
   const getConnectionsFromEdgesData = (edges) => {
     var connections = [];
 
     for(const edge of edges) {
+      if(originIsJobSource(edge.source)) continue;
+
       connections.push({
         "source": edge.source,
         "target": edge.target,
@@ -149,6 +172,10 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
 
     return connections;
   };
+
+  const originIsJobSource = (source) => {
+    return source.startsWith('job');
+  }
 
   return {
     time,
