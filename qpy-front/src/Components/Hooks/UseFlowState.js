@@ -68,7 +68,7 @@ export const useFlowState = () => {
 
     if(node.type === "server") {
       onClickEditServer();
-    } else {
+    } else if(node.type === "jobSource") {
       onClickEditJobSource();
     }
   }, [onClickEditServer, onClickEditJobSource]);
