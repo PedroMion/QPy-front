@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
+import { useRequests } from './useRequests';
 import { getScaledDistribution } from '../Utils/DistributionUtils';
 
 export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
@@ -15,19 +16,25 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
     onError,
   } = useObjectPropertiesModals();
 
-  const simulate = () => {
+  const {
+    simulateNetwork,
+  } = useRequests();
+
+  const simulate = async () => {
     showLoading();
 
     const requestJson = mapVariablesToJsonRequest(nodes, edges);
-    const response = sendRequestToQpy(requestJson);
+    const response = await simulateNetwork(requestJson);
+
+    console.log(response);
 
     finishLoading();
 
     if(isResponseValid(response)) {
-      setSimulationResults(response.json)
+      setSimulationResults(response)
       onShowResultsModal();
     } else {
-      showErrorToUser(response);
+      showErrorToUser();
     };
   };
 
@@ -36,77 +43,45 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   };
 
   const isResponseValid = (response) => {
-    return response.status_code === 200;
-  };
-
-  const sendRequestToQpy = (requestJson) => {
-    console.log(JSON.stringify(requestJson));
-    // Mock response
-    return {
-      "status_code": 200,
-      "json": {
-        "environment": {
-          "processedJobs": 5000,
-          "averageTimeInSystem": 2.5,
-          "averageQueueTime": 1.1,
-          "averageNumberOfJobs": 1.5,
-          "throughput": 1.5,
-          "maxDemand": 2
-        },
-        "servers": [
-          {
-            "serverId": "server-1",
-            "processedJobs": 5000,
-            "averageTimeInServer": 2.5,
-            "averageQueueTime": 1.1,
-            "averageNumberOfJobs": 1.5,
-            "averageVisitsPerJob": 1,
-            "utilization": 0.8,
-            "throughput": 1.5,
-            "demand": 2
-          },
-          {
-            "serverId": "server-2",
-            "processedJobs": 2500,
-            "averageTimeInServer": 1.34,
-            "averageQueueTime": 0.3,
-            "averageNumberOfJobs": 0.5,
-            "averageVisitsPerJob": 0.54,
-            "utilization": 0.23,
-            "throughput": 1.12,
-            "demand": 1.01
-          }
-        ],
-        "priority": [
-          {
-            "priority": 2,
-            "processedJobs": 500,
-            "averageTimeInSystem": 1.2,
-            "averageQueueTime": 0.6,
-          },
-          {
-            "priority": 1,
-            "processedJobs": 4500,
-            "averageTimeInSystem": 2.7,
-            "averageQueueTime": 1.6,
-          }
-        ]
-      }
-    };
+    return response !== null;
   };
 
   const mapVariablesToJsonRequest = (nodes, edges) => {
     var devices = getArrivalsAndServersFromNodesData(nodes);
     var connections = getConnectionsFromEdgesData(edges);
     var networkParameters = getNetworkParametersFromVariables();
+    var terminalsConfiguration = getTerminalsConfiguration();
 
-    return {
+    const result = {
       "networkParameters": networkParameters,
       "networkConfiguration": getNetworkConfiguration(),
       "devices": devices,
-      "connections": connections
+      "connections": connections,
+    };
+
+    if(terminalsConfiguration !== null) {
+      result.terminalsConfiguration = terminalsConfiguration;
     }
+
+    return result;
   };
+
+  const getTerminalsConfiguration = () => {
+    var terminalsConfiguration = {"routes": [], "priorityDistribution": null};
+
+    for(var conn of edges) {
+      if(conn.source === "terminal") {
+        terminalsConfiguration.routes.push({'target': conn.target, 'routingProbability': conn.data.routingProbability});
+      }
+    }
+
+    if(terminalsConfiguration.routes.length > 0) {
+      // Add prob
+      return terminalsConfiguration;
+    }
+
+    return null;
+  }
 
   const getNetworkParametersFromVariables = () => {
     return {
@@ -125,7 +100,7 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
           "distribution": node.data.distributionProperties,
           "queue": node.data.queueDiscipline,
         })
-      } else {
+      } else if(node.type === "jobSource") {
         var destinations = getDestinationsFromArrival(node);
         
         for(const dest of destinations.destinations) {
@@ -161,7 +136,7 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
     var connections = [];
 
     for(const edge of edges) {
-      if(originIsJobSource(edge.source)) continue;
+      if(originIsNotServer(edge.source)) continue;
 
       connections.push({
         "source": edge.source,
@@ -173,8 +148,8 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
     return connections;
   };
 
-  const originIsJobSource = (source) => {
-    return source.startsWith('job');
+  const originIsNotServer = (source) => {
+    return !source.startsWith('server');
   }
 
   return {

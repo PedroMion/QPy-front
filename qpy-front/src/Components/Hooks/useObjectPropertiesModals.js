@@ -62,7 +62,9 @@ export const useObjectPropertiesModals = () => {
   }
 
   const showLoading = () => {
+    onModalClosed();
     setEnvironmentOnModalOpen();
+    
     document.getElementById("main-page-loading-wrapper").style.display = 'flex';    
   };
 
