@@ -30,10 +30,10 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
         params = { lambda };
         break;
       case CONSTANT:
-        params = { value: constantValue };
+        params = { constantValue };
         break;
       case UNIFORM:
-        params = { lower: lowerBound, upper: upperBound };
+        params = { lowerBound, upperBound };
         break;
       case NORMAL:
         params = { mu, sigma };

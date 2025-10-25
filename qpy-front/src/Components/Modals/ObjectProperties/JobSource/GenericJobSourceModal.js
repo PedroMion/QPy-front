@@ -10,7 +10,7 @@ function GenericJobSourceModal({
     onCancel,
 }) {
     const [distributionProperties, setDistributionProperties] = useState({});
-    const [priorityDistribution, setPriorityDistribution] = useState(false);
+    const [priorityDistribution, setPriorityDistribution] = useState(null);
     const [resetFlag, setResetFlag] = useState(0);
 
     const validateField = (data) => {

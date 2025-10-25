@@ -7,9 +7,10 @@ function PriorityDistributionSection({ setPriorityDistribution, resetFlag }) {
     useEffect(() => {
         setHasPriority(false);
         setPairs([{ key:0, prob: ""}]);
+        setPriorityDistribution(null);
 
         document.getElementById('priority-checkbox').checked = false;
-    }, [resetFlag]);
+    }, [setPriorityDistribution, resetFlag]);
 
     const handleChange = (index, field, value) => {
         const newPairs = [...pairs];

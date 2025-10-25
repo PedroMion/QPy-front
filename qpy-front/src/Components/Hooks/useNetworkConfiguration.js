@@ -21,7 +21,7 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
 
     const getNetworkConfiguration = useCallback(() => {
         if (networkType === OPEN) {
-            return {'type': OPEN}
+            return {'networkType': OPEN}
         } else {
             return {
                 'networkType': CLOSED,
