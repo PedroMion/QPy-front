@@ -8,6 +8,11 @@ export const useObjectPropertiesModals = () => {
     document.getElementById("main-page-nav-bar-container").style.display = 'flex';
     document.getElementById("main-page-black-screen").style.display = 'none';
   }
+
+  const onClickHowToUse = () => {
+    setEnvironmentOnModalOpen();
+    document.getElementById("main-page-help-wrapper").style.display = 'flex';
+  };
   
   const onClickAddServer = () => {
     setEnvironmentOnModalOpen();
@@ -35,6 +40,7 @@ export const useObjectPropertiesModals = () => {
   }
 
   const onModalClosed = () => {
+    document.getElementById("main-page-help-wrapper").style.display = 'none';
     document.getElementById("main-page-server-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-job-source-properties-wrapper").style.display = 'none';
     document.getElementById("main-page-edge-properties-wrapper").style.display = 'none';
@@ -74,6 +80,7 @@ export const useObjectPropertiesModals = () => {
   };
 
   return {
+    onClickHowToUse,
     onClickAddServer,
     onClickAddJobSource,
     onClickEditServer,

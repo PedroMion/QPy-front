@@ -18,6 +18,7 @@ import EditJobSourceProperties from '../Modals/ObjectProperties/JobSource/EditJo
 import Loading from '../Modals/General/Loading';
 import ErrorModal from '../Modals/General/ErrorModal';
 import SimulationProperties from '../Modals/ObjectProperties/Simulation/SimulationProperties';
+import HelpModal from '../Modals/General/HelpModal';
 
 function MainPage() {
   const {
@@ -38,6 +39,7 @@ function MainPage() {
   } = useFlowState();
 
   const {
+    onClickHowToUse,
     onClickAddServer,
     onClickAddJobSource,
     onClickSimulate,
@@ -80,7 +82,8 @@ function MainPage() {
         </div>
         
         <div className='main-page-nav-bar-container' id='main-page-nav-bar-container'>
-          <NavBar 
+          <NavBar
+            onClickHowToUse={onClickHowToUse}
             onClickAddServer={onClickAddServer} 
             onClickAddJobSource={onClickAddJobSource}
             networkType={networkType} OPEN={OPEN}
@@ -97,6 +100,10 @@ function MainPage() {
           onNodeClick={onNodeClick}
           onEdgeClick={onEdgeClick} />
         
+        <div id='main-page-help-wrapper' className='main-page-modal-wrapper'>
+          <HelpModal onModalClosed={onModalClosed} />
+        </div>
+
         <div id='main-page-server-properties-wrapper' className='main-page-modal-wrapper'>
           <AddServerProperties addServer={addServer} onModalClosed={onModalClosed} />
         </div>

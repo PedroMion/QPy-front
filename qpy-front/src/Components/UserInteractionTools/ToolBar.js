@@ -1,9 +1,19 @@
 import './ToolBar.css';
 
-function ToolBar({onClickAddServer, onClickAddJobSource, networkType, OPEN, simulate}) {
+function ToolBar({onClickHowToUse, onClickAddServer, onClickAddJobSource, networkType, OPEN, simulate}) {
   return (
     <div className="tool-bar-container">
         <div className='tool-bar-options'>
+            <div className='tool-bar-element' onClick={onClickHowToUse}>
+              <div className='tool-bar-element-text' id='tool-bar-element-text-mi'>
+                ?
+              </div>
+
+              <div className='tool-bar-element-text'>
+                How to Use
+              </div>
+            </div>
+
             <div className='tool-bar-element' onClick={onClickAddServer}>
               <div className='tool-bar-element-text' id='tool-bar-element-text-mi'>
                 μ
