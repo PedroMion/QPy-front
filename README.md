@@ -8,6 +8,7 @@ Após a configuração, a simulação pode ser executada e os resultados analisa
 ## 📺 Tecnologias
 - Aplicação: React
 - API: QPy
+- Bibliotecas: xyflow
 - Deploy: Em breve
 
 ## 📰 Modo de uso
@@ -22,6 +23,7 @@ Once the configuration is complete, the simulation can be executed, and the resu
 ## 📺 Technologies
 - Application: React
 - API: QPy
+- Libraries: xyflow
 - Deployment: Coming soon
 
 ## 📰 How to use
