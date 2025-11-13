@@ -66,7 +66,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
 
       {distribution === EXPONENTIAL && (
         <div className="object-properties-element">
-          <span className="object-properties-element-text">Lambda (Jobs per second):</span>
+          <span className="object-properties-element-text">Lambda (Seconds per job):</span>
           <input
             type="number"
             className="object-properties-element-input"
@@ -78,7 +78,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
 
       {distribution === CONSTANT && (
         <div className="object-properties-element">
-          <span className="object-properties-element-text">Value (Jobs per second):</span>
+          <span className="object-properties-element-text">Value (Seconds per job):</span>
           <input
             type="number"
             className="object-properties-element-input"

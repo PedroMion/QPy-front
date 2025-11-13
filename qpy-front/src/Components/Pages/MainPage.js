@@ -59,6 +59,8 @@ function MainPage() {
     setNumberOfTerminals,
     thinkTimeDistribution,
     setThinkTimeDistribution,
+    terminalsPriorityDistribution,
+    setTerminalsPriorityDistribution,
     handleNetworkChange,
     getNetworkConfiguration,
   } = useNetworkConfiguration(setEnvironmentWhenNetworkChanges);
@@ -70,7 +72,7 @@ function MainPage() {
     setWarmup,
     simulate,
     simulationResults,
-  } = useQueueSimulation(nodes, edges, getNetworkConfiguration);
+  } = useQueueSimulation(nodes, edges, getNetworkConfiguration, terminalsPriorityDistribution);
 
   return (
     <div className="main-page-container">
@@ -131,6 +133,7 @@ function MainPage() {
             warmup={warmup} setWarmup={setWarmup}
             numberOfTerminals={numberOfTerminals} setNumberOfTerminals={setNumberOfTerminals}
             thinkTimeDistribution={thinkTimeDistribution} setThinkTimeDistribution={setThinkTimeDistribution}
+            setTerminalsPriorityDistribution={setTerminalsPriorityDistribution}
             CLOSED={CLOSED} networkType={networkType}
           />
         </div>

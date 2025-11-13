@@ -3,7 +3,7 @@ import { useObjectPropertiesModals } from './useObjectPropertiesModals';
 import { useRequests } from './useRequests';
 import { getScaledDistribution } from '../Utils/DistributionUtils';
 
-export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
+export const useQueueSimulation = (nodes, edges, getNetworkConfiguration, terminalsPriorityDistribution) => {
   const [time, setTime] = useState(1000);
   const [warmup, setWarmup] = useState(0);
   
@@ -67,7 +67,7 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration) => {
   };
 
   const getTerminalsConfiguration = () => {
-    var terminalsConfiguration = {"routes": [], "priorityDistribution": null};
+    var terminalsConfiguration = {"routes": [], "priorityDistribution": terminalsPriorityDistribution};
 
     for(var conn of edges) {
       if(conn.source === "terminal") {

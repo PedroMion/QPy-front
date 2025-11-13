@@ -1,5 +1,6 @@
 import '../ObjectProperties.css';
 import DistributionSection from '../Sections/DistributionSection';
+import PriorityDistributionSection from '../Sections/PriorityDistributionSection'
 import { useState } from 'react';
 
 function SimulationProperties({ 
@@ -14,11 +15,13 @@ function SimulationProperties({
     numberOfTerminals,
     setNumberOfTerminals,
     thinkTimeDistribution,
-    setThinkTimeDistribution
+    setThinkTimeDistribution,
+    setTerminalsPriorityDistribution
 }) {
     const onCancel = () => {
         setTime(1000);
         setWarmup(0);
+        setNumberOfTerminals(1);
         setResetFlag(resetFlag + 1);
         onModalClosed();
     };
@@ -94,6 +97,10 @@ function SimulationProperties({
                             resetFlag={resetFlag}
                         />
                         
+                        <PriorityDistributionSection 
+                            setPriorityDistribution={setTerminalsPriorityDistribution}
+                            resetFlag={resetFlag}
+                        />
                     </>
                 )}
 

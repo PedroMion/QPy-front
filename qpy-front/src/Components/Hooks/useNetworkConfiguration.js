@@ -7,6 +7,7 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
     const [networkType, setNetworkType] = useState(OPEN);
     const [numberOfTerminals, setNumberOfTerminals] = useState(1);
     const [thinkTimeDistribution, setThinkTimeDistribution] = useState({});
+    const [terminalsPriorityDistribution, setTerminalsPriorityDistribution] = useState(null);
 
     const resetConfiguration = () => {
         setNumberOfTerminals(1);
@@ -40,6 +41,8 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
         setNumberOfTerminals,
         thinkTimeDistribution,
         setThinkTimeDistribution,
+        terminalsPriorityDistribution,
+        setTerminalsPriorityDistribution,
         handleNetworkChange,
         getNetworkConfiguration,
     };

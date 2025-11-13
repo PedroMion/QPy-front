@@ -34,7 +34,7 @@ function ToolBar({onClickHowToUse, onClickAddServer, onClickAddJobSource, networ
                   Add Job Source
                 </div>
               </div>
-            )};
+            )}
         </div>
 
         <div className='tool-bar-button-container' onClick={simulate}>
