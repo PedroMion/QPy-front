@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import '../ObjectProperties.css';
 
 function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
@@ -17,7 +18,7 @@ function EdgeProperties({onConnect, onModalClosed, edgeProperties}) {
 
   const handleEdgeConnection = () => {
     if (!validateField()) {
-      alert("Please enter a valid routin probability.");
+      toast.error("Please enter a valid probability.");
       return;
     }
 

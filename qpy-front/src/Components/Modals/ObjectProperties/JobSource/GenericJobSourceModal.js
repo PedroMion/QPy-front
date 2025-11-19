@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from 'react-toastify';
 import "../ObjectProperties.css";
 import DistributionSection from "../Sections/DistributionSection";
 import PriorityDistributionSection from "../Sections/PriorityDistributionSection";
@@ -19,7 +20,7 @@ function GenericJobSourceModal({
 
     const handleSubmit = () => {
         if (!validateField(distributionProperties)) {
-            alert("Please enter valid distribution information.");
+            toast.error("Please enter valid distribution information.");
             return;
         }
 

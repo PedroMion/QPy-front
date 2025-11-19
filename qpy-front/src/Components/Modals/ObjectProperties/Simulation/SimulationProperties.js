@@ -2,6 +2,7 @@ import '../ObjectProperties.css';
 import DistributionSection from '../Sections/DistributionSection';
 import PriorityDistributionSection from '../Sections/PriorityDistributionSection'
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function SimulationProperties({ 
     onModalClosed,
@@ -30,7 +31,7 @@ function SimulationProperties({
 
     const handleSubmit = () => {
         if (networkType === CLOSED && !validateField(thinkTimeDistribution)) {
-            alert("Please fill all fields.");
+            toast.error("Please fill all fields.");
             return;
         }
         setResetFlag(resetFlag + 1);

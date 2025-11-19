@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import DistributionSection from '../Sections/DistributionSection';
 import QueueDisciplineSection from '../Sections/QueueDisciplineSection';
 import '../ObjectProperties.css';
@@ -17,7 +18,7 @@ function GenericServerModal({
 
   const handleSubmit = () => {
     if (!validateField(distributionProperties) || !validateField(queueProperties)) {
-      alert("Please fill all fields.");
+      toast.error("Please fill all fields.");
       return;
     }
     onSubmit(distributionProperties, queueProperties);
