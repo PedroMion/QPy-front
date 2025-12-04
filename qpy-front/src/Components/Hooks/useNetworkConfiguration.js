@@ -1,9 +1,7 @@
 import { useState, useCallback } from "react";
+import { OPEN, CLOSED } from '../../Constants/networkConstants';
 
 export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
-    const OPEN = "Open";
-    const CLOSED = "Closed";
-
     const [networkType, setNetworkType] = useState(OPEN);
     const [numberOfTerminals, setNumberOfTerminals] = useState(1);
     const [thinkTimeDistribution, setThinkTimeDistribution] = useState({});
@@ -33,8 +31,6 @@ export function useNetworkConfiguration(setEnvironmentWhenNetworkChanges) {
     }, [networkType, numberOfTerminals, thinkTimeDistribution]);
 
     return {
-        OPEN,
-        CLOSED,
         networkType,
         setNetworkType,
         numberOfTerminals,

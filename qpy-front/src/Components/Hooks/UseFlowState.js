@@ -6,7 +6,7 @@ import {
   useReactFlow
 } from '@xyflow/react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
-import { useNetworkConfiguration } from './useNetworkConfiguration';
+import { CLOSED } from '../../Constants/networkConstants'
 
 
 export const useFlowState = () => {
@@ -19,10 +19,6 @@ export const useFlowState = () => {
     onClickEditServer,
     onClickEditJobSource,
   } = useObjectPropertiesModals();
-
-  const {
-    CLOSED,
-  } = useNetworkConfiguration();
   
   const { screenToFlowPosition } = useReactFlow();
 
@@ -193,7 +189,7 @@ export const useFlowState = () => {
     if(networkType === CLOSED) {
       addTerminal();
     }
-  }, [setEdges, setNodes, setSelectedElement, CLOSED, addTerminal])
+  }, [setEdges, setNodes, setSelectedElement, addTerminal])
 
   return {
     nodes,

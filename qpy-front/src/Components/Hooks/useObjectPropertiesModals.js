@@ -62,9 +62,6 @@ export const useObjectPropertiesModals = () => {
 
   const onError = () => {
     onModalClosed();
-
-    setEnvironmentOnModalOpen();
-    document.getElementById('main-page-error-modal-wrapper').style.display = 'flex';
   }
 
   const showLoading = () => {

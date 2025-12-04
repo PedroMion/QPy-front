@@ -1,9 +1,8 @@
 import './Header.css';
 import icon from '../../Images/icon.png';
+import { OPEN, CLOSED } from '../../Constants/networkConstants';
 
-function Header({
-    OPEN, 
-    CLOSED, 
+function Header({ 
     networkType,
     handleNetworkChange
 }) {

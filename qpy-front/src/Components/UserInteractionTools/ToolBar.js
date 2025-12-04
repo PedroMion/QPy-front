@@ -1,6 +1,8 @@
 import './ToolBar.css';
+import { OPEN } from '../../Constants/networkConstants';
 
-function ToolBar({onClickHowToUse, onClickAddServer, onClickAddJobSource, networkType, OPEN, simulate}) {
+
+function ToolBar({onClickHowToUse, onClickAddServer, onClickAddJobSource, networkType, simulate}) {
   return (
     <div className="tool-bar-container">
         <div className='tool-bar-options'>

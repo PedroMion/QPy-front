@@ -16,7 +16,6 @@ import EditServerProperties from '../Modals/ObjectProperties/Server/EditServerPr
 import ResultsModal from '../Modals/Results/ResultsModal';
 import EditJobSourceProperties from '../Modals/ObjectProperties/JobSource/EditJobSourceProperties';
 import Loading from '../Modals/General/Loading';
-import ErrorModal from '../Modals/General/ErrorModal';
 import SimulationProperties from '../Modals/ObjectProperties/Simulation/SimulationProperties';
 import HelpModal from '../Modals/General/HelpModal';
 
@@ -52,8 +51,6 @@ function MainPage() {
   } = useEdges(onConnect);
 
   const {
-    OPEN,
-    CLOSED,
     networkType,
     numberOfTerminals,
     setNumberOfTerminals,
@@ -78,8 +75,7 @@ function MainPage() {
     <div className="main-page-container">
         <div className='main-page-header-container'>
           <Header
-            OPEN={OPEN} CLOSED={CLOSED} networkType={networkType}
-            handleNetworkChange={handleNetworkChange}
+            networkType={networkType} handleNetworkChange={handleNetworkChange}
           />
         </div>
         
@@ -88,7 +84,7 @@ function MainPage() {
             onClickHowToUse={onClickHowToUse}
             onClickAddServer={onClickAddServer} 
             onClickAddJobSource={onClickAddJobSource}
-            networkType={networkType} OPEN={OPEN}
+            networkType={networkType}
             simulate={onClickSimulate} />
         </div>
 
@@ -134,16 +130,12 @@ function MainPage() {
             numberOfTerminals={numberOfTerminals} setNumberOfTerminals={setNumberOfTerminals}
             thinkTimeDistribution={thinkTimeDistribution} setThinkTimeDistribution={setThinkTimeDistribution}
             setTerminalsPriorityDistribution={setTerminalsPriorityDistribution}
-            CLOSED={CLOSED} networkType={networkType}
+            networkType={networkType}
           />
         </div>
 
         <div id='main-page-results-properties-wrapper' className='main-page-modal-wrapper'>
           <ResultsModal onModalClosed={onModalClosed} simulationResults={simulationResults} />
-        </div>
-
-        <div id='main-page-error-modal-wrapper' className='main-page-modal-wrapper'>
-          <ErrorModal onModalClosed={onModalClosed} />
         </div>
 
         <div id='main-page-loading-wrapper' className='main-page-modal-wrapper'>

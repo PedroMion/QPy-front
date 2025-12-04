@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useObjectPropertiesModals } from './useObjectPropertiesModals';
 import { useRequests } from './useRequests';
 import { getScaledDistribution } from '../Utils/DistributionUtils';
+import { useEnvironmentValidation } from './useEnvironmentValidation';
 
-export const useQueueSimulation = (nodes, edges, getNetworkConfiguration, terminalsPriorityDistribution) => {
+export const useQueueSimulation = (nodes, edges, getNetworkConfiguration, terminalsPriorityDistribution) => {  
   const [time, setTime] = useState(1000);
   const [warmup, setWarmup] = useState(0);
   
@@ -20,30 +21,29 @@ export const useQueueSimulation = (nodes, edges, getNetworkConfiguration, termin
     simulateNetwork,
   } = useRequests();
 
+  const {
+    isRequestValid,
+    isResponseValid,
+  } = useEnvironmentValidation(onError);
+
+  
   const simulate = async () => {
     showLoading();
 
     const requestJson = mapVariablesToJsonRequest(nodes, edges);
-    const response = await simulateNetwork(requestJson);
 
-    console.log(response);
+    if(!isRequestValid(requestJson)) {
+      return;
+    }
+
+    const response = await simulateNetwork(requestJson);
 
     finishLoading();
 
     if(isResponseValid(response)) {
       setSimulationResults(response)
       onShowResultsModal();
-    } else {
-      showErrorToUser();
-    };
-  };
-
-  const showErrorToUser = () => {
-    onError();
-  };
-
-  const isResponseValid = (response) => {
-    return response !== null;
+    }
   };
 
   const mapVariablesToJsonRequest = (nodes, edges) => {

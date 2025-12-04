@@ -3,11 +3,11 @@ import DistributionSection from '../Sections/DistributionSection';
 import PriorityDistributionSection from '../Sections/PriorityDistributionSection'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { CLOSED } from '../../../../Constants/networkConstants';
 
 function SimulationProperties({ 
     onModalClosed,
     networkType,
-    CLOSED,
     simulate, 
     time, 
     setTime, 
