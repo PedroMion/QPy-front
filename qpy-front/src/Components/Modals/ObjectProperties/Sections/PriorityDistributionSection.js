@@ -43,6 +43,7 @@ function PriorityDistributionSection({ setPriorityDistribution, resetFlag }) {
                             type="number"
                             className="object-properties-multiple-element-input"
                             min="0"
+                            step="0.1"
                             value={pair.key}
                             onChange={(e) => handleChange(index, "key", e.target.value)}
                             placeholder="Chave"

@@ -69,6 +69,8 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
           <span className="object-properties-element-text">Lambda (Seconds per job):</span>
           <input
             type="number"
+            min="0"
+            step="0.1"
             className="object-properties-element-input"
             value={lambda}
             onChange={(e) => setLambda(e.target.value)}
@@ -81,6 +83,8 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
           <span className="object-properties-element-text">Value (Seconds per job):</span>
           <input
             type="number"
+            min="0"
+            step="0.1"
             className="object-properties-element-input"
             value={constantValue}
             onChange={(e) => setConstantValue(e.target.value)}
@@ -94,6 +98,8 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
             <span className="object-properties-element-text">Lower Bound:</span>
             <input
               type="number"
+              min="0"
+              step="0.1"
               className="object-properties-element-input"
               value={lowerBound}
               onChange={(e) => setLowerBound(e.target.value)}
@@ -103,6 +109,8 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
             <span className="object-properties-element-text">Upper Bound:</span>
             <input
               type="number"
+              min="0"
+              step="0.1"
               className="object-properties-element-input"
               value={upperBound}
               onChange={(e) => setUpperBound(e.target.value)}
@@ -117,6 +125,8 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
             <span className="object-properties-element-text">Mu:</span>
             <input
               type="number"
+              min="0"
+              step="0.1"
               className="object-properties-element-input"
               value={mu}
               onChange={(e) => setMu(e.target.value)}
@@ -126,6 +136,8 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
             <span className="object-properties-element-text">Sigma:</span>
             <input
               type="number"
+              min="0"
+              step="0.1"
               className="object-properties-element-input"
               value={sigma}
               onChange={(e) => setSigma(e.target.value)}

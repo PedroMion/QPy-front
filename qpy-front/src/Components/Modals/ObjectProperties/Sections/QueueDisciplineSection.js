@@ -75,6 +75,8 @@ function QueueDisciplineSection({ setQueueProperties, resetFlag }) {
           <span className="object-properties-element-text">Preemption Time:</span>
           <input
             type="number"
+            min="0"
+            step="0.1"
             className="object-properties-element-input"
             value={preemptionTime}
             onChange={(e) => setPreemptionTime(e.target.value)}
