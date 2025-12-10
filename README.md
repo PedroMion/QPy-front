@@ -12,7 +12,7 @@ Após a configuração, a simulação pode ser executada e os resultados analisa
 - Deploy: Em breve
 
 ## 📰 Modo de uso
-A aplicação está disponível para uso e pode ser acessada através do seguinte link:
+A aplicação está disponível para uso e pode ser acessada através do seguinte link: https://qpy-simulation-library.netlify.app/
 
 # 🇺🇸 en-US
 ## 📖 About this project
@@ -27,4 +27,4 @@ Once the configuration is complete, the simulation can be executed, and the resu
 - Deployment: Coming soon
 
 ## 📰 How to use
-The application is available for use and can be accessed through the following link:
+The application is available for use and can be accessed through the following link: https://qpy-simulation-library.netlify.app/
