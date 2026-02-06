@@ -10,7 +10,7 @@ export const getScaledDistribution = (distribution, scale) => {
 
     switch(distribution.distribution) { 
         case EXPONENTIAL: 
-            return {'distribution': EXPONENTIAL, 'params': {'lambda': (Number(distribution.params.lambda) / scale)}}; 
+            return {'distribution': EXPONENTIAL, 'params': {'meanTime': (Number(distribution.params.meanTime) / scale)}}; 
         case CONSTANT: 
             return {'distribution': CONSTANT, 'params': {'constantValue': distribution.params.constantValue / scale}}; 
         case UNIFORM: 

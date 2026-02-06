@@ -5,7 +5,7 @@ import { EXPONENTIAL, CONSTANT, UNIFORM, NORMAL } from "../../../Utils/Distribut
 function DistributionSection({ sectionTitle, setDistributionProperties, resetFlag }) {
   const [distribution, setDistribution] = useState(EXPONENTIAL);
 
-  const [lambda, setLambda] = useState("");
+  const [meanTime, setMeanTime] = useState("");
   const [constantValue, setConstantValue] = useState("");
   const [lowerBound, setLowerBound] = useState("");
   const [upperBound, setUpperBound] = useState("");
@@ -13,7 +13,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
   const [sigma, setSigma] = useState("");
 
   useEffect(() => {
-    setLambda("");
+    setMeanTime("");
     setConstantValue("");
     setLowerBound("");
     setUpperBound("");
@@ -27,7 +27,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
 
     switch (distribution) {
       case EXPONENTIAL:
-        params = { lambda };
+        params = { meanTime };
         break;
       case CONSTANT:
         params = { constantValue };
@@ -46,7 +46,7 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
       distribution,
       params,
     });
-  }, [distribution, lambda, constantValue, lowerBound, upperBound, mu, sigma, setDistributionProperties]);
+  }, [distribution, meanTime, constantValue, lowerBound, upperBound, mu, sigma, setDistributionProperties]);
 
   return (
     <div className="object-properties-section-container">
@@ -66,14 +66,14 @@ function DistributionSection({ sectionTitle, setDistributionProperties, resetFla
 
       {distribution === EXPONENTIAL && (
         <div className="object-properties-element">
-          <span className="object-properties-element-text">Lambda (Seconds per job):</span>
+          <span className="object-properties-element-text">Mean time between events (Seconds per job):</span>
           <input
             type="number"
             min="0"
             step="0.1"
             className="object-properties-element-input"
-            value={lambda}
-            onChange={(e) => setLambda(e.target.value)}
+            value={meanTime}
+            onChange={(e) => setMeanTime(e.target.value)}
           />
         </div>
       )}
